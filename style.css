@@ -602,7 +602,7 @@ main {
     .hero {
         min-height: auto;
         border-radius: 28px;
-        padding: 22px;
+        padding: 18px;
     }
 
     .hero h1 {
@@ -610,23 +610,29 @@ main {
     }
 
     .hero-visual {
-        min-height: 28rem;
+        min-height: 33rem;
+        margin-inline: -8px;
     }
 
     .portrait-main {
-        inset: 0 3rem 5.2rem 0;
+        inset: 0 1.1rem 4.6rem 0;
     }
 
     .portrait-accent {
-        width: 10rem;
-        height: 13rem;
+        width: 9rem;
+        height: 12rem;
+        right: 0.2rem;
+        bottom: 0.2rem;
+        border-width: 7px;
     }
 
     .hero-quote {
         left: auto;
-        right: 0;
-        bottom: 1rem;
-        max-width: 12rem;
+        right: 0.1rem;
+        bottom: 12.8rem;
+        max-width: 9.4rem;
+        padding: 10px 12px;
+        border-radius: 14px;
     }
 
     .section-grid {
@@ -643,11 +649,22 @@ main {
     }
 
     .life-gallery {
-        grid-auto-columns: calc((100% - 6px) / 1.35);
+        grid-auto-columns: calc(100% - 28px);
+        gap: 4px;
+        padding: 6px 0 10px;
     }
 
     .gallery-item img {
         aspect-ratio: 3 / 4;
+    }
+
+    .gallery-item {
+        border-radius: 22px;
+    }
+
+    .gallery-item figcaption {
+        padding: 8px 10px 10px;
+        font-size: 0.78rem;
     }
 
     .project-copy {
@@ -676,6 +693,32 @@ main {
 
     .hero-lead {
         font-size: 1.15rem;
+    }
+
+    .hero-visual {
+        min-height: 31rem;
+        margin-inline: -10px;
+    }
+
+    .portrait-main {
+        inset: 0 0.7rem 4.4rem 0;
+    }
+
+    .portrait-accent {
+        width: 8.4rem;
+        height: 11.2rem;
+    }
+
+    .hero-quote {
+        right: 0;
+        bottom: 11.9rem;
+        max-width: 8.4rem;
+        padding: 8px 10px;
+    }
+
+    .hero-quote p {
+        font-size: 0.72rem;
+        line-height: 1.35;
     }
 
     .hero-body,
