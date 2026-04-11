@@ -6,7 +6,7 @@ Personal website for Dolores, featuring:
 - Responsive design
 
 
-多乐Dolo，一个搞 AI 的产品经理
+多乐 Dolores，一个搞 AI 的产品经理
 
 Ex阿里、Shein | 周周黑客松志愿者 | 深圳市人工智能产业协会AI推广大使
 
