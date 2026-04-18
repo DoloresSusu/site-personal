@@ -159,6 +159,17 @@ main {
     text-transform: uppercase;
 }
 
+.hero-manifesto {
+    margin: 40px 0 0;
+    color: var(--accent-soft);
+    font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+    font-size: clamp(1.18rem, 2.2vw, 1.85rem);
+    font-style: italic;
+    letter-spacing: 0.02em;
+    line-height: 1.22;
+    opacity: 0.92;
+}
+
 .hero h1,
 .section-heading h2,
 .project-card h3 {
@@ -207,15 +218,26 @@ main {
 }
 
 .portrait-main {
-    inset: -0.5rem 4.8rem 3.2rem -0.6rem;
+    inset: -1rem 4rem 2.2rem -1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 248, 242, 0.96);
 }
 
 .portrait-accent {
-    width: 14.5rem;
-    height: 20.5rem;
-    right: 0;
-    bottom: 0;
+    width: 12.2rem;
+    height: 17.2rem;
+    right: 0.4rem;
+    bottom: 0.6rem;
     border: 10px solid rgba(248, 243, 236, 0.86);
+}
+
+.portrait-main img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: contain;
 }
 
 .section-grid {
@@ -671,6 +693,12 @@ main {
 
     .hero-lead {
         font-size: 1.15rem;
+    }
+
+    .hero-manifesto {
+        margin-top: 28px;
+        font-size: 1.08rem;
+        line-height: 1.3;
     }
 
     .hero-visual {
