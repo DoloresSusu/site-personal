@@ -110,6 +110,14 @@ main {
     position: relative;
 }
 
+.language-switch {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--text);
+    font-weight: 800;
+    padding: 6px 12px;
+}
+
 .site-nav a::after {
     content: "";
     position: absolute;
@@ -125,6 +133,10 @@ main {
 
 .site-nav a:hover::after {
     transform: scaleX(1);
+}
+
+.site-nav .language-switch::after {
+    display: none;
 }
 
 a:focus-visible,
@@ -388,6 +400,51 @@ main {
     background: var(--panel);
     border: 1px solid var(--line);
     overflow: hidden;
+}
+
+.project-card > h3,
+.project-card > p {
+    padding-left: 22px;
+    padding-right: 22px;
+}
+
+.project-card > h3 {
+    padding-top: 20px;
+}
+
+.project-card > p {
+    padding-bottom: 22px;
+}
+
+.skillfit-mini {
+    min-height: 14rem;
+    border-bottom: 1px solid var(--line);
+    padding: 24px;
+    background:
+        radial-gradient(circle at top right, rgba(128, 83, 63, 0.18), transparent 42%),
+        linear-gradient(145deg, rgba(255, 250, 245, 0.96), rgba(232, 218, 204, 0.92));
+    display: grid;
+    align-content: center;
+    gap: 12px;
+}
+
+.skillfit-mini span {
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.skillfit-mini strong {
+    font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    line-height: 0.98;
+}
+
+.skillfit-mini small {
+    color: var(--muted);
+    font-weight: 700;
 }
 
 .project-feature {

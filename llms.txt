@@ -5,9 +5,13 @@
 ## Canonical URLs
 
 - Homepage: https://doloressu.com/
+- English homepage: https://doloressu.com/en/
 - ClawTile AI hardware project: https://doloressu.com/projects/clawtile.html
+- English ClawTile project: https://doloressu.com/en/projects/clawtile.html
 - SkillFit AI Skill advisor project: https://doloressu.com/projects/skillfit.html
+- English SkillFit project: https://doloressu.com/en/projects/skillfit.html
 - Playful web games and mini-app experiments: https://doloressu.com/projects/playful-builds.html
+- English playful builds project: https://doloressu.com/en/projects/playful-builds.html
 
 ## Related Projects
 
