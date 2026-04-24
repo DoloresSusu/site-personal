@@ -126,6 +126,12 @@ main {
     transform: scaleX(1);
 }
 
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
 main {
     width: var(--content-width);
     margin: 0 auto;
@@ -446,21 +452,123 @@ main {
     box-shadow: 0 24px 48px rgba(77, 52, 29, 0.12);
 }
 
-.game-preview-frame {
+.game-preview-card:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: 0 24px 48px rgba(77, 52, 29, 0.12);
+}
+
+.game-cover {
+    position: relative;
     overflow: hidden;
     border-radius: 16px;
     aspect-ratio: 1.08 / 1;
-    background: #111;
+    min-height: 13rem;
     border: 1px solid rgba(255, 255, 255, 0.35);
 }
 
-.game-preview-frame iframe {
-    width: 140%;
-    height: 140%;
-    border: 0;
-    transform: scale(0.72);
-    transform-origin: top left;
-    pointer-events: none;
+.glide-cover {
+    background:
+        radial-gradient(circle at 28% 24%, rgba(255, 255, 255, 0.72), transparent 18%),
+        linear-gradient(145deg, #f4d7b8 0%, #c78058 48%, #2b201b 100%);
+}
+
+.glide-cover::before,
+.glide-cover::after {
+    content: "";
+    position: absolute;
+    left: -12%;
+    right: -12%;
+    height: 1px;
+    background: rgba(255, 250, 245, 0.58);
+    transform: rotate(-11deg);
+}
+
+.glide-cover::before {
+    top: 58%;
+}
+
+.glide-cover::after {
+    top: 70%;
+    opacity: 0.55;
+}
+
+.cover-orbit {
+    position: absolute;
+    width: 7.5rem;
+    height: 7.5rem;
+    right: -1.8rem;
+    top: -1.6rem;
+    border: 1px solid rgba(255, 255, 255, 0.52);
+    border-radius: 50%;
+}
+
+.cover-rider {
+    position: absolute;
+    left: 30%;
+    top: 47%;
+    width: 2.6rem;
+    height: 0.82rem;
+    border-radius: 999px;
+    background: #fff8ee;
+    box-shadow: 0 0 0 8px rgba(255, 248, 238, 0.12);
+    transform: rotate(-12deg);
+}
+
+.cover-line {
+    position: absolute;
+    left: 14%;
+    bottom: 18%;
+    width: 68%;
+    height: 0.42rem;
+    border-radius: 999px;
+    background: rgba(255, 250, 245, 0.78);
+}
+
+.zootopia-cover {
+    background:
+        radial-gradient(circle at 24% 20%, rgba(255, 255, 255, 0.72), transparent 17%),
+        linear-gradient(145deg, #f7e7ba 0%, #86b776 48%, #214f55 100%);
+}
+
+.zootopia-cover::before {
+    content: "";
+    position: absolute;
+    inset: 14%;
+    border: 1px solid rgba(255, 255, 255, 0.42);
+    border-radius: 22px;
+}
+
+.tile {
+    position: absolute;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 1rem;
+    background: rgba(255, 250, 245, 0.9);
+    box-shadow: 0 20px 40px rgba(33, 79, 85, 0.22);
+}
+
+.tile-one {
+    left: 24%;
+    top: 27%;
+    background: #ffe4a5;
+}
+
+.tile-two {
+    left: 48%;
+    top: 31%;
+    background: #f9f4e8;
+}
+
+.tile-three {
+    left: 35%;
+    top: 55%;
+    background: #d9edc9;
+}
+
+.tile-four {
+    left: 59%;
+    top: 58%;
+    background: #f7c8a5;
 }
 
 .game-preview-meta {
@@ -601,10 +709,40 @@ main {
     }
 
     .site-header {
-        padding: 18px 0 8px;
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        padding: 12px 0 8px;
+        backdrop-filter: blur(18px);
     }
 
     .site-nav {
+        display: flex;
+        max-width: 62vw;
+        gap: 6px;
+        overflow-x: auto;
+        padding: 4px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 250, 245, 0.72);
+        box-shadow: 0 14px 30px rgba(77, 52, 29, 0.08);
+        scrollbar-width: none;
+    }
+
+    .site-nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .site-nav a {
+        flex: 0 0 auto;
+        padding: 5px 8px;
+        border-radius: 999px;
+        font-size: 0.78rem;
+        line-height: 1.1;
+        white-space: nowrap;
+    }
+
+    .site-nav a::after {
         display: none;
     }
 
@@ -615,7 +753,8 @@ main {
     }
 
     .hero h1 {
-        font-size: 3.5rem;
+        font-size: clamp(2.8rem, 14vw, 3.5rem);
+        white-space: normal;
     }
 
     .hero-visual {
@@ -671,8 +810,9 @@ main {
         padding: 22px;
     }
 
-    .game-preview-frame {
-        aspect-ratio: 1.12 / 1;
+    .game-cover {
+        min-height: 11.5rem;
+        aspect-ratio: 1.16 / 1;
     }
 
     .game-preview-meta {
@@ -726,5 +866,28 @@ main {
 
     .qr-item img {
         width: 5.2rem;
+    }
+
+    .site-mark {
+        font-size: 1.72rem;
+    }
+
+    .site-nav {
+        max-width: 66vw;
+    }
+
+    .project-card h3 {
+        font-size: 1.68rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
     }
 }
