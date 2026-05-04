@@ -1,0 +1,1000 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI 硬件创业者学习报告 | ClawTile</title>
+  <meta name="description" content="一个给 AI 硬件创业者使用的交互式学习报告，用第一性原理和 MECE 框架拆解 Plaud、Omi、Bee、Limitless、Rabbit、Harvey 与 ClawTile。">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#f7f5ed">
+  <link rel="canonical" href="https://doloressu.com/learning/ai-hardware-framework.html">
+  <link rel="alternate" type="text/plain" href="https://doloressu.com/llms.txt" title="LLM-readable site summary">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="多乐 Dolores">
+  <meta property="og:title" content="AI 硬件创业者学习报告 | ClawTile">
+  <meta property="og:description" content="用第一性原理和 MECE 框架看懂 AI 硬件创业，并拆解 Plaud、Omi、Bee、Limitless、Rabbit、Harvey 与 ClawTile。">
+  <meta property="og:url" content="https://doloressu.com/learning/ai-hardware-framework.html">
+  <meta property="og:image" content="https://doloressu.com/assets/clawtile-price-board.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI 硬件创业者学习报告 | ClawTile">
+  <meta name="twitter:description" content="用第一性原理和 MECE 框架看懂 AI 硬件创业。">
+  <meta name="twitter:image" content="https://doloressu.com/assets/clawtile-price-board.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="../assets/favicon-128.png">
+  <style>
+    :root {
+      --ink: #17201b;
+      --muted: #68736a;
+      --paper: #f7f5ed;
+      --panel: #fffffb;
+      --soft: #eef3ea;
+      --line: #d9dfd2;
+      --green: #1d6a44;
+      --blue: #2e5f90;
+      --gold: #b27b24;
+      --red: #a34e3b;
+      --violet: #625873;
+      --shadow: 0 18px 58px rgba(22, 32, 27, 0.12);
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(29, 106, 68, .055) 1px, transparent 1px),
+        linear-gradient(rgba(29, 106, 68, .045) 1px, transparent 1px),
+        var(--paper);
+      background-size: 36px 36px;
+      font-family: "Avenir Next", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      letter-spacing: 0;
+    }
+
+    button { font: inherit; }
+    a { color: var(--green); }
+    .shell { width: min(1460px, calc(100vw - 40px)); margin: 0 auto; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      border-bottom: 1px solid var(--line);
+      background: rgba(247, 245, 237, .9);
+      backdrop-filter: blur(16px);
+    }
+    .topbar-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 18px;
+      padding: 12px 0;
+    }
+    .brand { display: flex; gap: 12px; align-items: center; min-width: 0; }
+    .mark {
+      width: 38px; height: 38px;
+      border: 1px solid var(--green);
+      display: grid; place-items: center;
+      font-weight: 900; color: var(--green);
+      background: #fbfff8;
+    }
+    .brand b { display: block; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .brand span { display: block; color: var(--muted); font-size: 11px; margin-top: 2px; }
+    .nav { display: flex; gap: 7px; justify-content: flex-end; flex-wrap: wrap; }
+    .nav a, .chip, .tab, .tool-btn {
+      border: 1px solid var(--line);
+      background: rgba(255,255,251,.75);
+      color: var(--ink);
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 8px 11px;
+      font-size: 12px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: .16s ease;
+    }
+    .nav a:hover, .chip:hover, .tab:hover, .tool-btn:hover,
+    .chip.active, .tab.active, .tool-btn.active {
+      border-color: var(--green);
+      background: var(--green);
+      color: white;
+    }
+
+    .hero { padding: 42px 0 24px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.03fr .97fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .card, .panel, .hero-main {
+      background: rgba(255,255,251,.93);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero-main {
+      min-height: 520px;
+      padding: 34px;
+      display: grid;
+      align-content: space-between;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-main::after {
+      content: "";
+      position: absolute;
+      right: -130px;
+      bottom: -170px;
+      width: 380px;
+      height: 380px;
+      border: 1px solid rgba(29,106,68,.25);
+      transform: rotate(32deg);
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px;
+      color: var(--green);
+      font-weight: 900;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 22px; height: 2px; background: var(--green); }
+    h1 {
+      margin: 18px 0 16px;
+      font-size: clamp(34px, 4.6vw, 64px);
+      line-height: 1.04;
+      letter-spacing: 0;
+      max-width: 980px;
+    }
+    .lead { margin: 0; max-width: 930px; color: #344139; font-size: 18px; line-height: 1.72; }
+
+    .equation {
+      position: relative; z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      gap: 10px;
+      align-items: center;
+      margin-top: 30px;
+    }
+    .eq-node {
+      min-height: 106px;
+      border: 1px solid #cad5c7;
+      background: #f6fbf4;
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+    .eq-node b { display: block; font-size: 15px; margin-bottom: 8px; }
+    .eq-node span { display: block; color: var(--muted); font-size: 13px; line-height: 1.48; }
+    .arrow { color: var(--green); font-size: 26px; font-weight: 900; }
+
+    .side-stack { display: grid; gap: 16px; grid-template-rows: .88fr 1.12fr; }
+    .brief { padding: 24px; border-left: 5px solid var(--green); }
+    .brief h2, .section-title h2, .card h3, .panel h3 { margin: 0; letter-spacing: 0; }
+    .brief h2 { font-size: 23px; line-height: 1.24; }
+    .brief p { margin: 14px 0 0; color: #344139; line-height: 1.65; font-size: 15px; }
+    .brief ul { margin: 14px 0 0; padding-left: 19px; color: var(--muted); line-height: 1.62; font-size: 14px; }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .metric {
+      border: 1px solid var(--line);
+      background: #fbfbf6;
+      border-radius: var(--radius);
+      padding: 14px;
+    }
+    .metric strong { display: block; color: var(--green); font-size: 29px; line-height: 1; }
+    .metric span { display: block; color: var(--muted); font-size: 12px; line-height: 1.35; margin-top: 7px; }
+
+    section { padding: 23px 0; }
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 16px;
+    }
+    .section-title h2 { font-size: 29px; line-height: 1.15; }
+    .section-title p { margin: 0; max-width: 680px; text-align: right; color: var(--muted); line-height: 1.6; font-size: 14px; }
+
+    .first-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .principle {
+      padding: 18px;
+      min-height: 230px;
+      position: relative;
+      overflow: hidden;
+    }
+    .principle::before {
+      content: attr(data-n);
+      position: absolute;
+      top: 8px; right: 13px;
+      font-size: 44px; font-weight: 900;
+      color: rgba(29,106,68,.08);
+    }
+    .principle h3 { font-size: 17px; margin-bottom: 10px; position: relative; }
+    .principle p { color: var(--muted); line-height: 1.55; font-size: 13px; margin: 0; position: relative; }
+    .question {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      font-size: 13px;
+      line-height: 1.48;
+      color: #354236;
+      position: relative;
+    }
+
+    .mece-layout {
+      display: grid;
+      grid-template-columns: .88fr 1.12fr;
+      gap: 18px;
+    }
+    .domain-list { padding: 18px; display: grid; gap: 10px; }
+    .domain-btn {
+      text-align: left;
+      border: 1px solid var(--line);
+      background: #fbfbf6;
+      border-radius: var(--radius);
+      padding: 14px;
+      cursor: pointer;
+      transition: .16s ease;
+    }
+    .domain-btn.active, .domain-btn:hover { border-color: var(--green); background: #f0f7ef; }
+    .domain-btn b { display: block; font-size: 15px; }
+    .domain-btn span { display: block; color: var(--muted); margin-top: 5px; font-size: 12px; line-height: 1.4; }
+    .domain-panel { padding: 22px; }
+    .domain-panel h3 { font-size: 24px; margin-bottom: 10px; }
+    .domain-panel p { color: #354236; line-height: 1.65; margin: 0 0 16px; }
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .check {
+      border: 1px solid var(--line);
+      background: #fbfbf6;
+      border-radius: var(--radius);
+      padding: 12px;
+      color: var(--muted);
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .check b { color: var(--ink); display: block; margin-bottom: 5px; font-size: 13px; }
+
+    .lab {
+      display: grid;
+      grid-template-columns: .96fr 1.04fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .map-card { padding: 20px; min-height: 560px; }
+    .controls { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+    .chipset { display: flex; flex-wrap: wrap; gap: 8px; }
+    .matrix {
+      height: 470px;
+      border: 1px solid #cbd5c8;
+      border-radius: var(--radius);
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, transparent calc(50% - 1px), rgba(23,32,27,.16) calc(50% - 1px), rgba(23,32,27,.16) calc(50% + 1px), transparent calc(50% + 1px)),
+        linear-gradient(transparent calc(50% - 1px), rgba(23,32,27,.16) calc(50% - 1px), rgba(23,32,27,.16) calc(50% + 1px), transparent calc(50% + 1px)),
+        linear-gradient(135deg, rgba(29,106,68,.11), rgba(46,95,144,.06));
+    }
+    .quadrant { position: absolute; padding: 11px 13px; font-weight: 900; color: rgba(23,32,27,.38); font-size: 13px; }
+    .q1 { right: 0; top: 0; } .q2 { left: 0; top: 0; } .q3 { left: 0; bottom: 0; } .q4 { right: 0; bottom: 0; }
+    .axis { position: absolute; font-size: 12px; color: rgba(23,32,27,.6); font-weight: 800; pointer-events: none; }
+    .axis.xl { left: 12px; bottom: 34px; } .axis.xr { right: 12px; bottom: 34px; }
+    .axis.yt { left: 12px; top: 34px; } .axis.yb { left: 12px; bottom: 12px; }
+    .dot {
+      position: absolute;
+      width: 16px; height: 16px;
+      transform: translate(-50%, -50%);
+      border: 2px solid white;
+      border-radius: 999px;
+      box-shadow: 0 8px 24px rgba(23,32,27,.25);
+      cursor: pointer;
+      transition: .16s ease;
+      z-index: 5;
+    }
+    .dot::after {
+      content: attr(data-name);
+      position: absolute;
+      left: 18px; top: -6px;
+      background: rgba(255,255,251,.9);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 3px 7px;
+      font-size: 11px;
+      font-weight: 900;
+      white-space: nowrap;
+      color: var(--ink);
+    }
+    .dot:hover, .dot.active { transform: translate(-50%, -50%) scale(1.35); z-index: 12; }
+    .dot.dim { opacity: .18; }
+    .dot[data-id="clawtile"]::after {
+      left: auto;
+      right: 18px;
+    }
+
+    .case-panel { padding: 22px; display: grid; gap: 14px; }
+    .case-head { display: flex; justify-content: space-between; align-items: start; gap: 12px; }
+    .case-title { font-size: 30px; line-height: 1.05; font-weight: 900; }
+    .badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      border: 1px solid var(--line);
+      background: #f8faf4;
+      color: var(--green);
+      border-radius: 999px;
+      padding: 6px 9px;
+      font-size: 11px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .case-summary { margin: 0; color: #354236; line-height: 1.65; font-size: 14px; }
+    .score-grid { display: grid; gap: 8px; }
+    .score-row {
+      display: grid; grid-template-columns: 88px 1fr 28px;
+      gap: 9px; align-items: center;
+      color: var(--muted); font-size: 12px;
+    }
+    .bar { height: 8px; border-radius: 999px; background: #e8ede3; overflow: hidden; }
+    .bar i { display: block; height: 100%; width: var(--w); background: linear-gradient(90deg, var(--green), #86a984); border-radius: inherit; }
+    .case-notes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+    .note {
+      border: 1px solid var(--line);
+      background: #fbfbf6;
+      border-radius: var(--radius);
+      padding: 13px;
+    }
+    .note b { display: block; font-size: 13px; margin-bottom: 7px; }
+    .note p { margin: 0; color: var(--muted); line-height: 1.5; font-size: 13px; }
+
+    .rank-wrap {
+      display: grid;
+      grid-template-columns: .78fr 1.22fr;
+      gap: 18px;
+    }
+    .rank-list { padding: 16px; display: grid; gap: 10px; }
+    .rank-item {
+      border: 1px solid var(--line);
+      background: #fbfbf6;
+      border-radius: var(--radius);
+      padding: 12px;
+      display: grid;
+      grid-template-columns: 32px 1fr auto;
+      gap: 10px;
+      align-items: center;
+      text-align: left;
+      cursor: pointer;
+      transition: .16s ease;
+    }
+    .rank-item:hover, .rank-item.active { border-color: var(--green); background: #f0f7ef; }
+    .rank-num {
+      width: 29px; height: 29px; border-radius: 999px;
+      background: var(--ink); color: white;
+      display: grid; place-items: center;
+      font-size: 12px; font-weight: 900;
+    }
+    .rank-item b { display: block; font-size: 15px; }
+    .rank-item span { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; line-height: 1.3; }
+    .lesson-panel { padding: 22px; }
+    .lesson-panel h3 { font-size: 25px; margin-bottom: 8px; }
+    .lesson-panel p { margin: 0; color: #354236; line-height: 1.67; }
+    .lesson-panel ul { margin: 14px 0 0; padding-left: 19px; color: var(--muted); line-height: 1.58; font-size: 14px; }
+
+    .playbook-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .play-card { padding: 18px; min-height: 250px; }
+    .play-card h3 { font-size: 18px; margin-bottom: 10px; }
+    .play-card ul { margin: 0; padding-left: 18px; color: var(--muted); line-height: 1.56; font-size: 13px; }
+
+    .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    .stage-panel { padding: 22px; }
+    .stage-box {
+      border: 1px solid var(--line);
+      background: #fbfbf6;
+      border-radius: var(--radius);
+      padding: 20px;
+      min-height: 185px;
+    }
+    .stage-box h3 { font-size: 23px; margin-bottom: 9px; }
+    .stage-box p { margin: 0; color: #354236; line-height: 1.65; }
+    .stage-box ul { margin: 13px 0 0; padding-left: 18px; color: var(--muted); line-height: 1.58; font-size: 14px; }
+
+    .decoder {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .term { padding: 18px; min-height: 170px; }
+    .term h3 { font-size: 17px; margin-bottom: 9px; }
+    .term p { margin: 0; color: var(--muted); line-height: 1.52; font-size: 13px; }
+
+    .footer {
+      padding: 20px 0 48px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    @media (max-width: 1180px) {
+      .hero-grid, .lab, .rank-wrap, .mece-layout { grid-template-columns: 1fr; }
+      .first-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .playbook-grid, .decoder { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .section-title { flex-direction: column; align-items: start; }
+      .section-title p { text-align: left; }
+    }
+    @media (max-width: 760px) {
+      .shell { width: min(100vw - 24px, 1460px); }
+      .topbar-inner { grid-template-columns: 1fr; }
+      .nav { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; }
+      .hero { padding-top: 24px; }
+      .hero-main, .brief, .map-card, .case-panel, .lesson-panel, .stage-panel { padding: 18px; }
+      .equation { grid-template-columns: 1fr; }
+      .arrow { justify-self: center; transform: rotate(90deg); }
+      .first-grid, .playbook-grid, .decoder, .metrics, .check-grid, .case-notes { grid-template-columns: 1fr; }
+      .matrix { height: 395px; }
+      .dot::after { font-size: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <div class="brand">
+        <div class="mark">AI</div>
+        <div>
+          <b>AI 硬件创业者学习报告</b>
+          <span>Equip me: from PM to hardware founder judgment</span>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#first">第一性原理</a>
+        <a href="#mece">MECE 框架</a>
+        <a href="#cases">竞品案例</a>
+        <a href="#lessons">参考优先级</a>
+        <a href="#playbook">创始人手册</a>
+        <a href="#roadmap">学习路径</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div class="hero-main">
+          <div>
+            <div class="eyebrow">Learning dossier, not application material</div>
+            <h1>快速看懂 AI 硬件创业：不要先看模型，先看“现实入口”。</h1>
+            <p class="lead">你要训练的是硬件创业者判断力：一个项目为什么必须有硬件？它采集了什么高价值现实输入？AI 把输入变成了什么可复用上下文？最终有没有让用户少做一步、快做一步、放心做一步？</p>
+          </div>
+          <div class="equation">
+            <div class="eq-node"><b>1. 用户真实任务</b><span>会议、销售、访谈、学习、灵感、家庭照护。不是“想用 AI”，而是“哪件事反复消耗时间”。</span></div>
+            <div class="arrow">→</div>
+            <div class="eq-node"><b>2. 稀缺现实输入</b><span>语音、图像、位置、状态、人物关系、现场上下文。硬件价值来自更自然地捕获这些输入。</span></div>
+            <div class="arrow">→</div>
+            <div class="eq-node"><b>3. 可行动闭环</b><span>摘要、记忆、提醒、待办、知识库、CRM、飞书、Obsidian、Webhook、Agent 动作。</span></div>
+          </div>
+        </div>
+        <aside class="side-stack">
+          <div class="card brief">
+            <h2>你要获得的能力</h2>
+            <p>不是成为 ML 工程师，而是像有 1-2 年经验的硬件创业者一样判断：这个 AI 硬件项目的需求是否真、硬件是否必要、AI 是否闭环、商业是否可持续、风险是否超出团队能力。</p>
+          </div>
+          <div class="card brief">
+            <h2>6 个案例的学习用途</h2>
+            <ul>
+              <li>Plaud：学习品类教育和硬件 + AI 服务。</li>
+              <li>Omi：学习开放生态和开发者共创。</li>
+              <li>Bee：学习个人记忆和 ambient context。</li>
+              <li>Limitless：学习对话记忆、搜索和 API 化。</li>
+              <li>Rabbit：学习从“输出”到“行动”的叙事。</li>
+              <li>Harvey：学习垂直 AI 工作流和评测体系。</li>
+            </ul>
+            <div class="metrics">
+              <div class="metric"><strong>7</strong><span>AI 硬件/AI 产品护城河层级</span></div>
+              <div class="metric"><strong>4</strong><span>创始人必须掌握的 MECE 判断域</span></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="first">
+      <div class="shell">
+        <div class="section-title">
+          <h2>第一性原理：AI 硬件为什么存在</h2>
+          <p>如果一个 AI 硬件只是把大模型包进一个新外壳，它大概率会失败。硬件必须在真实世界入口、持续上下文、低摩擦交互、可信边界或商业闭环上创造增量。</p>
+        </div>
+        <div class="first-grid">
+          <article class="card principle" data-n="01">
+            <h3>任务先于硬件</h3>
+            <p>先问用户本来要完成什么任务，再看硬件是不是让这个任务更快、更自然、更少遗漏。</p>
+            <div class="question">判断题：没有硬件时，用户是否已经用手机、会议软件或手工方式在做这件事？</div>
+          </article>
+          <article class="card principle" data-n="02">
+            <h3>输入决定价值上限</h3>
+            <p>AI 的输出质量受输入限制。硬件如果能捕获更完整、更及时、更真实的上下文，就有存在价值。</p>
+            <div class="question">判断题：这个输入是否比用户手动输入更高频、更完整、更可信？</div>
+          </article>
+          <article class="card principle" data-n="03">
+            <h3>闭环决定留存</h3>
+            <p>用户不是为“生成摘要”长期付费，而是为少做后续整理、跟进、搜索、归档、同步而付费。</p>
+            <div class="question">判断题：AI 结果最后进入了哪里？还是停在 App 里？</div>
+          </article>
+          <article class="card principle" data-n="04">
+            <h3>信任决定采集边界</h3>
+            <p>越 ambient、越长期、越隐私敏感的硬件，价值可能越大，但信任成本也越高。</p>
+            <div class="question">判断题：用户、旁人、组织是否知道它在记录？是否能控制和删除？</div>
+          </article>
+          <article class="card principle" data-n="05">
+            <h3>经济模型决定能否规模化</h3>
+            <p>AI 成本、硬件毛利、售后、退货、云端服务、订阅或按量收费，决定项目能否持续。</p>
+            <div class="question">判断题：每多一个活跃用户，是赚钱更多，还是亏损更多？</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="mece">
+      <div class="shell">
+        <div class="section-title">
+          <h2>MECE 判断框架：4 个域，12 个问题</h2>
+          <p>把一个 AI 硬件项目拆成需求、硬件、AI、商业四个互不重叠但共同完整的判断域。点击左侧模块，右侧会切换你该问的问题。</p>
+        </div>
+        <div class="mece-layout">
+          <div class="card domain-list" id="domainList"></div>
+          <div class="card domain-panel" id="domainPanel"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cases">
+      <div class="shell">
+        <div class="section-title">
+          <h2>竞品案例训练场</h2>
+          <p>坐标图不是为了做漂亮分析，而是训练你快速判断：它是记录工具、记忆工具、行动工具，还是开放入口？点击项目看拆解。</p>
+        </div>
+        <div class="lab">
+          <div class="card map-card">
+            <div class="controls">
+              <div class="chipset" id="filters">
+                <button class="chip active" data-filter="all">全部</button>
+                <button class="chip" data-filter="category">品类对照</button>
+                <button class="chip" data-filter="open">开放生态</button>
+                <button class="chip" data-filter="memory">记忆产品</button>
+                <button class="chip" data-filter="action">行动叙事</button>
+                <button class="chip" data-filter="method">方法论</button>
+              </div>
+              <button class="tool-btn" id="resetBtn">回到 ClawTile</button>
+            </div>
+            <div class="matrix" id="matrix">
+              <div class="quadrant q1">开放入口 + 行动闭环</div>
+              <div class="quadrant q2">封闭体验 + 行动闭环</div>
+              <div class="quadrant q3">记录 / 摘要工具</div>
+              <div class="quadrant q4">开放入口但闭环待补</div>
+              <div class="axis yt">输出闭环强</div>
+              <div class="axis yb">停留在记录</div>
+              <div class="axis xl">封闭 App</div>
+              <div class="axis xr">开放接口 / 自有模型 / 开源</div>
+            </div>
+          </div>
+          <aside class="card case-panel">
+            <div class="case-head">
+              <div>
+                <div class="case-title" id="caseName">ClawTile</div>
+                <div class="badge" id="caseTag">你的项目</div>
+              </div>
+              <div class="badge" id="caseRole">当前坐标</div>
+            </div>
+            <p class="case-summary" id="caseSummary"></p>
+            <div class="score-grid" id="scoreGrid"></div>
+            <div class="case-notes">
+              <div class="note"><b>它真正卖什么</b><p id="sellsText"></p></div>
+              <div class="note"><b>你该学什么</b><p id="learnText"></p></div>
+              <div class="note"><b>不要误学什么</b><p id="avoidText"></p></div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="lessons">
+      <div class="shell">
+        <div class="section-title">
+          <h2>参考优先级：哪些要深学，哪些远远借鉴</h2>
+          <p>深学不是照抄，而是拆它的增长假设、产品边界、商业模式和风险。ClawTile 要把参考对象分层。</p>
+        </div>
+        <div class="rank-wrap">
+          <div class="card rank-list" id="rankList"></div>
+          <div class="card lesson-panel" id="lessonPanel"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="playbook">
+      <div class="shell">
+        <div class="section-title">
+          <h2>硬件创业者的脑内手册</h2>
+          <p>遇到任何新 AI 硬件项目，都按这四张清单过一遍。你会很快看出它是好项目、伪需求、过度承诺，还是有价值但不适合现在做。</p>
+        </div>
+        <div class="playbook-grid">
+          <article class="card play-card">
+            <h3>需求判断</h3>
+            <ul>
+              <li>用户现在是否已经在用替代方案？</li>
+              <li>使用频率是每天、每周，还是偶尔？</li>
+              <li>用户是为节省时间、降低风险，还是为了新奇感？</li>
+              <li>谁付款，谁使用，谁被影响？</li>
+            </ul>
+          </article>
+          <article class="card play-card">
+            <h3>硬件判断</h3>
+            <ul>
+              <li>硬件是否比手机更自然？</li>
+              <li>采集边界是否清楚？</li>
+              <li>工业设计、续航、连接、售后是否可控？</li>
+              <li>硬件 BOM 和毛利能否支撑早期试错？</li>
+            </ul>
+          </article>
+          <article class="card play-card">
+            <h3>AI 判断</h3>
+            <ul>
+              <li>AI 是功能，还是改变了完整工作流？</li>
+              <li>需要 RAG、Agent、fine-tune，还是 prompt 就够？</li>
+              <li>能否回溯原文，降低幻觉风险？</li>
+              <li>有没有评测集判断效果变好了？</li>
+            </ul>
+          </article>
+          <article class="card play-card">
+            <h3>商业判断</h3>
+            <ul>
+              <li>硬件一次性收入后，是否有持续服务收入？</li>
+              <li>AI 调用成本是否可控？</li>
+              <li>是标准化产品、渠道销售，还是项目交付？</li>
+              <li>规模化后，竞争壁垒来自哪里？</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <div class="shell">
+        <div class="section-title">
+          <h2>30 天学习路径：把自己装备成硬件创业 PM</h2>
+          <p>你不需要先学成工程师。最快路径是形成判断力：看懂品类、拆解竞品、定义 MVP、跑用户反馈、理解成本和交付边界。</p>
+        </div>
+        <div class="card stage-panel">
+          <div class="tabs" id="stageTabs">
+            <button class="tab active" data-stage="week1">第 1 周：建立框架</button>
+            <button class="tab" data-stage="week2">第 2 周：拆竞品</button>
+            <button class="tab" data-stage="week3">第 3 周：定义 MVP</button>
+            <button class="tab" data-stage="week4">第 4 周：跑验证</button>
+          </div>
+          <div class="stage-box" id="stageBox"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell">
+        <div class="section-title">
+          <h2>术语翻译：你需要懂到什么程度</h2>
+          <p>创业早期不要被技术词吓住。你需要知道每个词解决什么问题、何时该用、何时不要用。</p>
+        </div>
+        <div class="decoder">
+          <article class="card term"><h3>RAG</h3><p>让 AI 基于用户自己的资料回答。适合会议历史、客户资料、项目文档、知识库。比 fine-tune 更适合早期。</p></article>
+          <article class="card term"><h3>Fine-tune</h3><p>用大量高质量样本调整模型行为。适合输出格式稳定、数据充足、有评测集的场景。ClawTile 早期不应主打。</p></article>
+          <article class="card term"><h3>Agent</h3><p>让 AI 不只回答，而是调用工具完成动作。早期要做有限可靠动作，不要承诺操作所有 App。</p></article>
+          <article class="card term"><h3>BYO Key</h3><p>用户使用自己的模型 API Key。适合高级用户降低成本、掌握控制权；普通用户仍需要开箱即用云端能力。</p></article>
+          <article class="card term"><h3>Webhook / API</h3><p>把结果推送给其他工具或自动化系统。它是 ClawTile 从“记录工具”变成“工作流入口”的关键。</p></article>
+          <article class="card term"><h3>Memory</h3><p>不是简单保存文件，而是能按人、项目、客户、主题检索和追问。要先做工作记忆，不要直接做“记住一切”。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer shell">
+      公开资料来源：<a href="https://www.plaud.ai/">Plaud</a>、<a href="https://docs.omi.me/doc/get_started/introduction">Omi docs</a>、<a href="https://bee.computer/">Bee</a>、<a href="https://www.limitless.ai/new">Limitless</a>、<a href="https://www.rabbit.tech/newsroom/introducing-r1">Rabbit r1 newsroom</a>、<a href="https://help.harvey.ai/articles/what-ai-models-does-harvey-use">Harvey support</a>、OpenAI Retrieval / Model Optimization 文档。竞品分析基于公开页面信息与产品定位，不把未公开技术实现当作事实。
+    </footer>
+  </main>
+
+  <script>
+    const domains = [
+      {
+        id: "demand",
+        title: "A. 需求域：用户为什么非要它不可",
+        subtitle: "任务、频率、替代方案、付费动机",
+        text: "AI 硬件不是从硬件开始，而是从反复发生的用户任务开始。需求域要判断：这个任务是否高频、痛感是否真实、现有方案哪里不够好、用户是否愿意为节省时间或降低风险付费。",
+        checks: [
+          ["任务", "用户要完成什么工作？会议纪要、客户跟进、访谈整理、日常记忆还是数字任务执行？"],
+          ["频率", "这个场景是每天/每周发生，还是低频尝鲜？频率决定留存和复购。"],
+          ["替代", "用户现在用手机、会议软件、录音笔、手工笔记还是其他硬件？"],
+          ["付款", "谁买单？个人、团队、小机构、企业？付款人和使用者是否一致？"]
+        ]
+      },
+      {
+        id: "hardware",
+        title: "B. 硬件域：为什么必须是一个设备",
+        subtitle: "形态、采集、隐私、供应链",
+        text: "硬件必须提供手机 App 难以提供的优势：更低摩擦、更自然的采集、更明确的使用边界、更好的现场存在感，或更强的场景提示。",
+        checks: [
+          ["形态", "录音卡、胸针、手环、桌面设备分别适合什么场景？"],
+          ["采集", "是显式按键、会议自动记录，还是全天候 ambient？边界越模糊，信任成本越高。"],
+          ["交付", "BOM、打样、生产、质检、售后和退货是否可控？"],
+          ["信任", "旁人能否知道它在记录？用户能否暂停、删除和管理数据？"]
+        ]
+      },
+      {
+        id: "ai",
+        title: "C. AI 域：是否真的改变工作流",
+        subtitle: "上下文、记忆、RAG、Agent、评测",
+        text: "AI 能力不是越复杂越好。早期要判断：prompt、模板、RAG、Agent、fine-tune 哪个最小可用。能闭环的简单 AI，胜过无法交付的大模型叙事。",
+        checks: [
+          ["上下文", "AI 能否拿到足够完整、结构化、可回溯的输入？"],
+          ["记忆", "是否能按人、项目、客户、主题持续沉淀，而不是保存一堆文件？"],
+          ["行动", "AI 结果能否生成待办、推送工具、触发流程，而不是只停在摘要？"],
+          ["评测", "有没有办法判断摘要更准、任务更完整、幻觉更少？"]
+        ]
+      },
+      {
+        id: "business",
+        title: "D. 商业域：能不能持续赚钱",
+        subtitle: "毛利、AI 成本、渠道、交付边界",
+        text: "硬件创业最容易低估的是成本结构：硬件毛利、售后、云端 AI 成本、客服、渠道分成、退货都会吃掉利润。商业域要把增长叙事拉回单位经济模型。",
+        checks: [
+          ["收入", "硬件一次性收入之外，是否有按量服务、订阅、连接器或团队采购？"],
+          ["成本", "每小时转写、总结、存储、检索和 Agent 调用成本如何控制？"],
+          ["渠道", "靠内容种草、开发者社区、渠道代理、小机构采购，还是企业销售？"],
+          ["边界", "标准化产品和企业项目交付之间有没有被混淆？"]
+        ]
+      }
+    ];
+
+    const cases = [
+      {
+        id: "plaud", name: "Plaud", filter: "category", tag: "品类对照", role: "最直接参考",
+        x: 43, y: 60, color: "#2e5f90",
+        summary: "Plaud 是 AI note-taking 硬件的成熟参照：录音卡、可穿戴 NotePin、Note Pro、Desktop，加上 Plaud Intelligence、职业场景模板、AI 会员计划和导出集成。",
+        sells: "卖的不是录音，而是“你可以专注对话，后续纪要和跟进由系统处理”。",
+        learn: "学习品类教育、硬件 + AI 服务套餐、职业模板、团队/专业人群定位。",
+        avoid: "不要和它硬拼成熟度、语言数、模板数量和品牌规模。",
+        scores: {需求: 9, 硬件: 8, AI: 7, 开放: 5, 闭环: 6, 商业: 8, 风险: 7},
+        rank: 1,
+        lesson: "ClawTile 要把 Plaud 当作用户理解品类的锚点。它告诉你：AI 硬件可以通过清晰任务、专业模板和服务计划赚钱。但 ClawTile 的差异化应该是开放接入、自有模型、结果回屏和工作流连接。"
+      },
+      {
+        id: "omi", name: "Omi", filter: "open", tag: "开放生态", role: "战略参考",
+        x: 86, y: 70, color: "#1d6a44",
+        summary: "Omi 官方定位为 open-source AI wearable，强调硬件、固件、App、后端开源，自托管/云端、实时转写、AI memory、22+ integrations 和应用市场。",
+        sells: "卖的是“你可以拥有并改造自己的 AI wearable 系统”，不是单一硬件。",
+        learn: "学习开放协议、开发者共创、自托管叙事、AI memory 和集成生态。",
+        avoid: "不要一开始承诺完整开源生态、插件市场和自托管全套后端。",
+        scores: {需求: 6, 硬件: 7, AI: 8, 开放: 10, 闭环: 7, 商业: 5, 风险: 5},
+        rank: 2,
+        lesson: "Omi 是 ClawTile 长期差异化的重要参照。它证明开放性本身可以形成社群和开发者吸引力。但 ClawTile 早期要把开放收敛成少数可用连接器，而不是一上来做平台。"
+      },
+      {
+        id: "limitless", name: "Limitless", filter: "memory", tag: "记忆产品", role: "产品能力参考",
+        x: 50, y: 78, color: "#b27b24",
+        summary: "Limitless 强调 Remember Everything、smart summaries、perfect recall、automatic speaker recognition、100+ languages，并提供 API / MCP 让记忆可编程。",
+        sells: "卖的是“对话不会丢失，未来可以搜索、回放、追问和接入工具”。",
+        learn: "学习对话记忆、说话人识别、搜索、回放、API 化和 MCP 连接。",
+        avoid: "不要一开始讲“记住一切”。ClawTile 应先做项目/客户/会议维度的工作记忆。",
+        scores: {需求: 8, 硬件: 7, AI: 8, 开放: 7, 闭环: 8, 商业: 7, 风险: 6},
+        rank: 3,
+        lesson: "Limitless 教你看懂记忆产品的核心：不是保存录音文件，而是把对话变成可检索、可回放、可连接其他 AI 工具的数据层。ClawTile 可以先做轻量工作记忆。"
+      },
+      {
+        id: "bee", name: "Bee", filter: "memory", tag: "个人记忆", role: "愿景参考",
+        x: 35, y: 67, color: "#a34e3b",
+        summary: "Bee 是 wearable personal AI，把 conversations、tasks、places 转成 summaries、personal insights、timely reminders，并强调学习用户模式、偏好和关系。",
+        sells: "卖的是“个人生活和工作的 ambient memory”，让 AI 更懂你的日常。",
+        learn: "学习个人洞察、提醒、模式学习、低打扰体验和生活化表达。",
+        avoid: "不要照搬全天候 ambient listening；隐私和旁人信任成本高。",
+        scores: {需求: 7, 硬件: 8, AI: 7, 开放: 3, 闭环: 7, 商业: 5, 风险: 4},
+        rank: 4,
+        lesson: "Bee 帮你理解消费级 AI 硬件的情感价值：不是效率工具那么冷，而是个人陪伴与记忆。但 ClawTile 当前更适合显式记录的生产力场景。"
+      },
+      {
+        id: "rabbit", name: "Rabbit r1", filter: "action", tag: "行动叙事", role: "远远借鉴",
+        x: 31, y: 88, color: "#d05a3a",
+        summary: "Rabbit r1 的官方叙事是从 words to action，用 LAM 让系统理解意图并操作 App / 网站，主张 app-free online experience。",
+        sells: "卖的是“AI 不只是回答，而是替你完成数字任务”。",
+        learn: "学习从输入到行动的叙事、硬件作为 AI 门户的表达方式。",
+        avoid: "不要承诺替代手机、操作所有 App 或自动完成所有任务。",
+        scores: {需求: 6, 硬件: 8, AI: 8, 开放: 3, 闭环: 9, 商业: 5, 风险: 3},
+        rank: 5,
+        lesson: "Rabbit 的价值是启发你讲“行动闭环”。但这类承诺极难交付。ClawTile 应把行动限制在可靠动作：写入 Obsidian、推飞书、触发 Webhook、发给龙虾。"
+      },
+      {
+        id: "harvey", name: "Harvey", filter: "method", tag: "AI 方法论", role: "非硬件案例",
+        x: 56, y: 88, color: "#625873",
+        summary: "Harvey 不是硬件项目，但它展示了专业 AI 产品的方法：多模型系统拆分任务、选择模型、综合输出，并用 BigLaw Bench 和产品数据评估效果。",
+        sells: "卖的是“可信的专业工作成果”，不是某一个模型。",
+        learn: "学习 RAG、多模型编排、专业流程拆解、评测体系和可信输出。",
+        avoid: "不要把它当硬件竞品，也不要早期主打 fine-tune。",
+        scores: {需求: 9, 硬件: 1, AI: 9, 开放: 5, 闭环: 9, 商业: 9, 风险: 5},
+        rank: 6,
+        lesson: "Harvey 教你不要迷信模型。真正的 AI 产品护城河来自工作流、知识库、评测、可信输出和组织级交付。ClawTile 后期也需要自己的场景评测集。"
+      },
+      {
+        id: "clawtile", name: "ClawTile", filter: "open", tag: "你的项目", role: "当前训练对象",
+        x: 78, y: 68, color: "#17201b",
+        summary: "ClawTile 当前最好的坐标是：从显式录音卡切入，把真实语音送进用户自己的 AI / Agent / 自动化流程，逐步扩展为面向个人与团队智能工作流的多模态硬件入口。",
+        sells: "短期卖“录音到 AI 工作流闭环”，长期卖“现实世界进入 AI 的开放入口矩阵”。",
+        learn: "近期学 Plaud 的品类教育，学 Omi 的开放性，学 Limitless 的记忆能力，学 Rabbit 的行动闭环。",
+        avoid: "不要讲自研大模型、企业级定制、全天候监听或替代手机。",
+        scores: {需求: 8, 硬件: 7, AI: 7, 开放: 9, 闭环: 7, 商业: 7, 风险: 6},
+        rank: 0,
+        lesson: "ClawTile 的核心不是“又一张录音卡”，而是开放工作流入口。第一阶段只要证明：用户录完之后，能稳定进入自己的 AI / Agent / 自动化流程。"
+      }
+    ];
+
+    const stages = {
+      week1: {
+        title: "第 1 周：建立硬件创业判断框架",
+        text: "每天选一个 AI 硬件项目，用需求、硬件、AI、商业四域拆解。目标不是记信息，而是训练你看到任何项目都能问出关键问题。",
+        bullets: ["读完本报告", "用 12 个问题拆 Plaud 和 ClawTile", "写一页：ClawTile 为什么必须有硬件"]
+      },
+      week2: {
+        title: "第 2 周：深拆 3 个强相关竞品",
+        text: "深拆 Plaud、Omi、Limitless。一个代表成熟品类，一个代表开放生态，一个代表记忆层。拆官网、价格、用户对象、功能链路、商业模式。",
+        bullets: ["画出每个竞品的用户旅程", "列出它们的赚钱方式", "找出 ClawTile 的可避让竞争点"]
+      },
+      week3: {
+        title: "第 3 周：定义 ClawTile 的最小闭环",
+        text: "把大愿景压缩成可验证 MVP：录音、转写、摘要、模板、开放接入、结果回到用户工具。先证明一条链路能跑通。",
+        bullets: ["定义 4 个首批模板", "定义 3 个连接器", "确认普通用户云端 AI 和高级用户 BYO Key 的边界"]
+      },
+      week4: {
+        title: "第 4 周：用用户反馈校准判断",
+        text: "拿 MVP 链路去问早期用户：他们愿意在哪里付费、哪里最不满意、是否真的把结果接入工作流。创业判断力来自真实反馈。",
+        bullets: ["访谈 10 个高意愿用户", "收集 5 个真实录音场景", "建立第一版效果评测表"]
+      }
+    };
+
+    function renderDomains() {
+      const list = document.getElementById("domainList");
+      domains.forEach(domain => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "domain-btn";
+        btn.dataset.id = domain.id;
+        btn.innerHTML = `<b>${domain.title}</b><span>${domain.subtitle}</span>`;
+        btn.addEventListener("click", () => selectDomain(domain.id));
+        list.appendChild(btn);
+      });
+      selectDomain("demand");
+    }
+
+    function selectDomain(id) {
+      const domain = domains.find(item => item.id === id) || domains[0];
+      document.querySelectorAll(".domain-btn").forEach(btn => btn.classList.toggle("active", btn.dataset.id === id));
+      document.getElementById("domainPanel").innerHTML = `
+        <h3>${domain.title}</h3>
+        <p>${domain.text}</p>
+        <div class="check-grid">
+          ${domain.checks.map(([title, body]) => `<div class="check"><b>${title}</b>${body}</div>`).join("")}
+        </div>
+      `;
+    }
+
+    function renderDots() {
+      const matrix = document.getElementById("matrix");
+      cases.forEach(item => {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "dot";
+        dot.dataset.id = item.id;
+        dot.dataset.filter = item.filter;
+        dot.dataset.name = item.name;
+        dot.style.left = `${item.x}%`;
+        dot.style.top = `${100 - item.y}%`;
+        dot.style.background = item.color;
+        dot.addEventListener("click", () => selectCase(item.id));
+        matrix.appendChild(dot);
+      });
+    }
+
+    function selectCase(id) {
+      const item = cases.find(c => c.id === id) || cases.find(c => c.id === "clawtile");
+      document.getElementById("caseName").textContent = item.name;
+      document.getElementById("caseTag").textContent = item.tag;
+      document.getElementById("caseRole").textContent = item.role;
+      document.getElementById("caseSummary").textContent = item.summary;
+      document.getElementById("sellsText").textContent = item.sells;
+      document.getElementById("learnText").textContent = item.learn;
+      document.getElementById("avoidText").textContent = item.avoid;
+      document.querySelectorAll(".dot").forEach(dot => dot.classList.toggle("active", dot.dataset.id === item.id));
+
+      const scoreGrid = document.getElementById("scoreGrid");
+      scoreGrid.innerHTML = "";
+      Object.entries(item.scores).forEach(([key, value]) => {
+        const row = document.createElement("div");
+        row.className = "score-row";
+        row.innerHTML = `<span>${key}</span><div class="bar"><i style="--w:${value * 10}%"></i></div><strong>${value}</strong>`;
+        scoreGrid.appendChild(row);
+      });
+    }
+
+    function filterCases(filter) {
+      document.querySelectorAll("#filters .chip").forEach(btn => btn.classList.toggle("active", btn.dataset.filter === filter));
+      document.querySelectorAll(".dot").forEach(dot => {
+        const show = filter === "all" || dot.dataset.filter === filter || dot.dataset.id === "clawtile";
+        dot.classList.toggle("dim", !show);
+      });
+    }
+
+    function renderRanks() {
+      const list = document.getElementById("rankList");
+      cases.filter(c => c.rank > 0).sort((a, b) => a.rank - b.rank).forEach(item => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "rank-item";
+        btn.dataset.id = item.id;
+        btn.innerHTML = `<div class="rank-num">${item.rank}</div><div><b>${item.name}</b><span>${item.role}｜${item.tag}</span></div><div class="badge">${item.filter}</div>`;
+        btn.addEventListener("click", () => selectRank(item.id));
+        list.appendChild(btn);
+      });
+      selectRank("plaud");
+    }
+
+    function selectRank(id) {
+      const item = cases.find(c => c.id === id);
+      if (!item) return;
+      document.querySelectorAll(".rank-item").forEach(btn => btn.classList.toggle("active", btn.dataset.id === id));
+      document.getElementById("lessonPanel").innerHTML = `
+        <h3>${item.rank}. ${item.name}：${item.role}</h3>
+        <p>${item.lesson}</p>
+        <ul>
+          <li><strong>它真正卖什么：</strong>${item.sells}</li>
+          <li><strong>你该学什么：</strong>${item.learn}</li>
+          <li><strong>不要误学什么：</strong>${item.avoid}</li>
+        </ul>
+      `;
+      selectCase(id);
+    }
+
+    function selectStage(id) {
+      const stage = stages[id] || stages.week1;
+      document.querySelectorAll("#stageTabs .tab").forEach(btn => btn.classList.toggle("active", btn.dataset.stage === id));
+      document.getElementById("stageBox").innerHTML = `
+        <h3>${stage.title}</h3>
+        <p>${stage.text}</p>
+        <ul>${stage.bullets.map(item => `<li>${item}</li>`).join("")}</ul>
+      `;
+    }
+
+    document.getElementById("filters").addEventListener("click", event => {
+      const btn = event.target.closest("button[data-filter]");
+      if (btn) filterCases(btn.dataset.filter);
+    });
+    document.getElementById("resetBtn").addEventListener("click", () => {
+      filterCases("all");
+      selectCase("clawtile");
+    });
+    document.getElementById("stageTabs").addEventListener("click", event => {
+      const btn = event.target.closest("button[data-stage]");
+      if (btn) selectStage(btn.dataset.stage);
+    });
+
+    renderDomains();
+    renderDots();
+    renderRanks();
+    selectCase("clawtile");
+    selectStage("week1");
+  </script>
+</body>
+</html>

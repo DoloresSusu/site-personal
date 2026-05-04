@@ -12,6 +12,7 @@
 - English SkillFit project: https://doloressu.com/en/projects/skillfit.html
 - Playful web games and mini-app experiments: https://doloressu.com/projects/playful-builds.html
 - English playful builds project: https://doloressu.com/en/projects/playful-builds.html
+- AI hardware founder learning report: https://doloressu.com/learning/ai-hardware-framework.html
 
 ## Related Projects
 
