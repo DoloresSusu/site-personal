@@ -608,6 +608,81 @@ main {
     font-size: 0.88rem;
 }
 
+.learning-bridge {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    gap: 18px;
+    align-items: center;
+    padding: 22px;
+    border-radius: 28px;
+    border: 1px solid rgba(128, 83, 63, 0.18);
+    background:
+        radial-gradient(circle at top right, rgba(128, 83, 63, 0.18), transparent 36%),
+        linear-gradient(135deg, rgba(255, 250, 245, 0.92), rgba(238, 226, 214, 0.84));
+    box-shadow: 0 22px 52px rgba(77, 52, 29, 0.1);
+    text-decoration: none;
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.learning-bridge:hover,
+.learning-bridge:focus-visible {
+    transform: translateY(-3px);
+    border-color: rgba(128, 83, 63, 0.34);
+    box-shadow: 0 30px 70px rgba(77, 52, 29, 0.16);
+}
+
+.learning-bridge-copy h3 {
+    margin: 0;
+    font-family: "Noto Serif SC", "Songti SC", serif;
+    font-size: clamp(1.45rem, 3vw, 2.1rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.learning-bridge-copy p:not(.project-kicker) {
+    margin: 10px 0 0;
+    max-width: 48rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.learning-bridge-meta {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(4.8rem, 1fr));
+    gap: 8px;
+    min-width: 18rem;
+}
+
+.learning-bridge-meta span {
+    display: grid;
+    gap: 2px;
+    padding: 12px;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.46);
+    color: var(--muted);
+    font-size: 0.78rem;
+    line-height: 1.2;
+}
+
+.learning-bridge-meta strong {
+    color: var(--accent);
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.learning-bridge-action {
+    justify-self: end;
+    border-radius: 999px;
+    background: var(--text);
+    color: #fffaf5;
+    padding: 12px 16px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
 .qr-item {
     margin: 0;
     display: grid;
@@ -900,6 +975,20 @@ main {
         grid-template-columns: 1fr;
     }
 
+    .learning-bridge {
+        grid-template-columns: 1fr;
+        align-items: start;
+    }
+
+    .learning-bridge-meta {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .learning-bridge-action {
+        justify-self: start;
+    }
+
     .detail-hero-media img {
         aspect-ratio: 4 / 3;
     }
@@ -1015,6 +1104,25 @@ main {
 
     .project-copy {
         padding: 22px;
+    }
+
+    .learning-bridge {
+        padding: 18px;
+        border-radius: 24px;
+        gap: 14px;
+    }
+
+    .learning-bridge-meta {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .learning-bridge-meta span {
+        padding: 10px;
+        font-size: 0.72rem;
+    }
+
+    .learning-bridge-meta strong {
+        font-size: 1.25rem;
     }
 
     .game-cover {
