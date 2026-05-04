@@ -6,7 +6,7 @@
   <title>AI 硬件创业者学习报告 | ClawTile</title>
   <meta name="description" content="一个给 AI 硬件创业者使用的交互式学习报告，用第一性原理和 MECE 框架拆解 Plaud、Omi、Bee、Limitless、Rabbit、Harvey 与 ClawTile。">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#f7f5ed">
+  <meta name="theme-color" content="#f4efe8">
   <link rel="canonical" href="https://doloressu.com/learning/ai-hardware-framework.html">
   <link rel="alternate" type="text/plain" href="https://doloressu.com/llms.txt" title="LLM-readable site summary">
   <meta property="og:locale" content="zh_CN">
@@ -21,21 +21,27 @@
   <meta name="twitter:description" content="用第一性原理和 MECE 框架看懂 AI 硬件创业。">
   <meta name="twitter:image" content="https://doloressu.com/assets/clawtile-price-board.png">
   <link rel="icon" type="image/png" sizes="128x128" href="../assets/favicon-128.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Noto+Serif+SC:wght@400;500;600;700&amp;display=swap"
+    rel="stylesheet">
+  <script defer src="/_vercel/insights/script.js"></script>
   <style>
     :root {
-      --ink: #17201b;
-      --muted: #68736a;
-      --paper: #f7f5ed;
-      --panel: #fffffb;
-      --soft: #eef3ea;
-      --line: #d9dfd2;
-      --green: #1d6a44;
-      --blue: #2e5f90;
-      --gold: #b27b24;
-      --red: #a34e3b;
-      --violet: #625873;
-      --shadow: 0 18px 58px rgba(22, 32, 27, 0.12);
-      --radius: 8px;
+      --ink: #1f1914;
+      --muted: #6f6358;
+      --paper: #f4efe8;
+      --panel: rgba(255, 250, 245, 0.9);
+      --soft: rgba(255, 250, 245, 0.64);
+      --line: rgba(63, 44, 25, 0.12);
+      --green: #80533f;
+      --blue: #7a5b75;
+      --gold: #a57c5f;
+      --red: #9b604b;
+      --violet: #6d5e70;
+      --shadow: 0 28px 80px rgba(69, 47, 23, 0.14);
+      --radius: 24px;
     }
 
     * { box-sizing: border-box; }
@@ -44,47 +50,47 @@
       margin: 0;
       color: var(--ink);
       background:
-        linear-gradient(90deg, rgba(29, 106, 68, .055) 1px, transparent 1px),
-        linear-gradient(rgba(29, 106, 68, .045) 1px, transparent 1px),
-        var(--paper);
-      background-size: 36px 36px;
-      font-family: "Avenir Next", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+        radial-gradient(circle at top left, rgba(241, 198, 160, 0.5), transparent 30%),
+        radial-gradient(circle at right 18%, rgba(153, 101, 77, 0.12), transparent 23%),
+        linear-gradient(180deg, #f9f5ef 0%, #efe8df 100%);
+      font-family: "Manrope", "PingFang SC", "Hiragino Sans GB", sans-serif;
       letter-spacing: 0;
     }
 
     button { font: inherit; }
     a { color: var(--green); }
-    .shell { width: min(1460px, calc(100vw - 40px)); margin: 0 auto; }
+    .shell { width: min(1180px, calc(100vw - 48px)); margin: 0 auto; }
 
     .topbar {
       position: sticky;
       top: 0;
       z-index: 40;
-      border-bottom: 1px solid var(--line);
-      background: rgba(247, 245, 237, .9);
-      backdrop-filter: blur(16px);
+      padding: 16px 0 8px;
+      background: rgba(244, 239, 232, 0.88);
+      backdrop-filter: blur(18px);
     }
     .topbar-inner {
       display: grid;
       grid-template-columns: 1fr auto;
       align-items: center;
       gap: 18px;
-      padding: 12px 0;
     }
-    .brand { display: flex; gap: 12px; align-items: center; min-width: 0; }
-    .mark {
-      width: 38px; height: 38px;
-      border: 1px solid var(--green);
-      display: grid; place-items: center;
-      font-weight: 900; color: var(--green);
-      background: #fbfff8;
+    .brand { display: flex; gap: 16px; align-items: center; min-width: 0; }
+    .site-mark {
+      text-decoration: none;
+      color: var(--ink);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
     }
     .brand b { display: block; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .brand span { display: block; color: var(--muted); font-size: 11px; margin-top: 2px; }
     .nav { display: flex; gap: 7px; justify-content: flex-end; flex-wrap: wrap; }
     .nav a, .chip, .tab, .tool-btn {
       border: 1px solid var(--line);
-      background: rgba(255,255,251,.75);
+      background: rgba(255, 250, 245, .68);
       color: var(--ink);
       text-decoration: none;
       border-radius: 999px;
@@ -98,7 +104,7 @@
     .chip.active, .tab.active, .tool-btn.active {
       border-color: var(--green);
       background: var(--green);
-      color: white;
+      color: #fffaf5;
     }
 
     .hero { padding: 42px 0 24px; }
@@ -109,10 +115,11 @@
       align-items: stretch;
     }
     .card, .panel, .hero-main {
-      background: rgba(255,255,251,.93);
+      background: var(--panel);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
     }
     .hero-main {
       min-height: 520px;
@@ -129,7 +136,7 @@
       bottom: -170px;
       width: 380px;
       height: 380px;
-      border: 1px solid rgba(29,106,68,.25);
+      border: 1px solid rgba(128, 83, 63, 0.18);
       transform: rotate(32deg);
     }
     .eyebrow {
@@ -142,12 +149,42 @@
     .eyebrow::before { content: ""; width: 22px; height: 2px; background: var(--green); }
     h1 {
       margin: 18px 0 16px;
+      font-family: "Noto Serif SC", "Songti SC", serif;
+      font-weight: 600;
       font-size: clamp(34px, 4.6vw, 64px);
       line-height: 1.04;
-      letter-spacing: 0;
+      letter-spacing: -0.03em;
       max-width: 980px;
     }
-    .lead { margin: 0; max-width: 930px; color: #344139; font-size: 18px; line-height: 1.72; }
+    .lead { margin: 0; max-width: 930px; color: var(--muted); font-size: 18px; line-height: 1.72; }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .hero-actions a {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.58);
+      color: var(--ink);
+      font-weight: 800;
+      padding: 11px 15px;
+      text-decoration: none;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .hero-actions a:first-child {
+      background: var(--ink);
+      color: #fffaf5;
+    }
+
+    .hero-actions a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 38px rgba(77, 52, 29, 0.12);
+    }
 
     .equation {
       position: relative; z-index: 1;
@@ -159,8 +196,8 @@
     }
     .eq-node {
       min-height: 106px;
-      border: 1px solid #cad5c7;
-      background: #f6fbf4;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.48);
       border-radius: var(--radius);
       padding: 16px;
     }
@@ -171,8 +208,8 @@
     .side-stack { display: grid; gap: 16px; grid-template-rows: .88fr 1.12fr; }
     .brief { padding: 24px; border-left: 5px solid var(--green); }
     .brief h2, .section-title h2, .card h3, .panel h3 { margin: 0; letter-spacing: 0; }
-    .brief h2 { font-size: 23px; line-height: 1.24; }
-    .brief p { margin: 14px 0 0; color: #344139; line-height: 1.65; font-size: 15px; }
+    .brief h2 { font-family: "Noto Serif SC", "Songti SC", serif; font-size: 23px; line-height: 1.24; }
+    .brief p { margin: 14px 0 0; color: var(--muted); line-height: 1.65; font-size: 15px; }
     .brief ul { margin: 14px 0 0; padding-left: 19px; color: var(--muted); line-height: 1.62; font-size: 14px; }
 
     .metrics {
@@ -183,7 +220,7 @@
     }
     .metric {
       border: 1px solid var(--line);
-      background: #fbfbf6;
+      background: rgba(255, 255, 255, 0.48);
       border-radius: var(--radius);
       padding: 14px;
     }
@@ -198,7 +235,13 @@
       gap: 24px;
       margin-bottom: 16px;
     }
-    .section-title h2 { font-size: 29px; line-height: 1.15; }
+    .section-title h2 {
+      font-family: "Noto Serif SC", "Songti SC", serif;
+      font-size: 29px;
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
     .section-title p { margin: 0; max-width: 680px; text-align: right; color: var(--muted); line-height: 1.6; font-size: 14px; }
 
     .first-grid {
@@ -217,7 +260,7 @@
       position: absolute;
       top: 8px; right: 13px;
       font-size: 44px; font-weight: 900;
-      color: rgba(29,106,68,.08);
+      color: rgba(128, 83, 63, 0.1);
     }
     .principle h3 { font-size: 17px; margin-bottom: 10px; position: relative; }
     .principle p { color: var(--muted); line-height: 1.55; font-size: 13px; margin: 0; position: relative; }
@@ -240,18 +283,18 @@
     .domain-btn {
       text-align: left;
       border: 1px solid var(--line);
-      background: #fbfbf6;
+      background: rgba(255, 255, 255, 0.5);
       border-radius: var(--radius);
       padding: 14px;
       cursor: pointer;
       transition: .16s ease;
     }
-    .domain-btn.active, .domain-btn:hover { border-color: var(--green); background: #f0f7ef; }
+    .domain-btn.active, .domain-btn:hover { border-color: var(--green); background: rgba(255, 255, 255, 0.78); }
     .domain-btn b { display: block; font-size: 15px; }
     .domain-btn span { display: block; color: var(--muted); margin-top: 5px; font-size: 12px; line-height: 1.4; }
     .domain-panel { padding: 22px; }
     .domain-panel h3 { font-size: 24px; margin-bottom: 10px; }
-    .domain-panel p { color: #354236; line-height: 1.65; margin: 0 0 16px; }
+    .domain-panel p { color: var(--muted); line-height: 1.65; margin: 0 0 16px; }
     .check-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -259,7 +302,7 @@
     }
     .check {
       border: 1px solid var(--line);
-      background: #fbfbf6;
+      background: rgba(255, 255, 255, 0.5);
       border-radius: var(--radius);
       padding: 12px;
       color: var(--muted);
@@ -284,9 +327,9 @@
       position: relative;
       overflow: hidden;
       background:
-        linear-gradient(90deg, transparent calc(50% - 1px), rgba(23,32,27,.16) calc(50% - 1px), rgba(23,32,27,.16) calc(50% + 1px), transparent calc(50% + 1px)),
-        linear-gradient(transparent calc(50% - 1px), rgba(23,32,27,.16) calc(50% - 1px), rgba(23,32,27,.16) calc(50% + 1px), transparent calc(50% + 1px)),
-        linear-gradient(135deg, rgba(29,106,68,.11), rgba(46,95,144,.06));
+        linear-gradient(90deg, transparent calc(50% - 1px), rgba(63, 44, 25, .14) calc(50% - 1px), rgba(63, 44, 25, .14) calc(50% + 1px), transparent calc(50% + 1px)),
+        linear-gradient(transparent calc(50% - 1px), rgba(63, 44, 25, .14) calc(50% - 1px), rgba(63, 44, 25, .14) calc(50% + 1px), transparent calc(50% + 1px)),
+        linear-gradient(135deg, rgba(255, 250, 245, .84), rgba(238, 226, 214, .68));
     }
     .quadrant { position: absolute; padding: 11px 13px; font-weight: 900; color: rgba(23,32,27,.38); font-size: 13px; }
     .q1 { right: 0; top: 0; } .q2 { left: 0; top: 0; } .q3 { left: 0; bottom: 0; } .q4 { right: 0; bottom: 0; }
@@ -308,7 +351,7 @@
       content: attr(data-name);
       position: absolute;
       left: 18px; top: -6px;
-      background: rgba(255,255,251,.9);
+      background: rgba(255,250,245,.92);
       border: 1px solid var(--line);
       border-radius: 999px;
       padding: 3px 7px;
@@ -330,7 +373,7 @@
     .badge {
       display: inline-flex; align-items: center; justify-content: center;
       border: 1px solid var(--line);
-      background: #f8faf4;
+      background: rgba(255, 250, 245, 0.82);
       color: var(--green);
       border-radius: 999px;
       padding: 6px 9px;
@@ -338,19 +381,19 @@
       font-weight: 900;
       white-space: nowrap;
     }
-    .case-summary { margin: 0; color: #354236; line-height: 1.65; font-size: 14px; }
+    .case-summary { margin: 0; color: var(--muted); line-height: 1.65; font-size: 14px; }
     .score-grid { display: grid; gap: 8px; }
     .score-row {
       display: grid; grid-template-columns: 88px 1fr 28px;
       gap: 9px; align-items: center;
       color: var(--muted); font-size: 12px;
     }
-    .bar { height: 8px; border-radius: 999px; background: #e8ede3; overflow: hidden; }
-    .bar i { display: block; height: 100%; width: var(--w); background: linear-gradient(90deg, var(--green), #86a984); border-radius: inherit; }
+    .bar { height: 8px; border-radius: 999px; background: rgba(63, 44, 25, 0.1); overflow: hidden; }
+    .bar i { display: block; height: 100%; width: var(--w); background: linear-gradient(90deg, var(--green), var(--gold)); border-radius: inherit; }
     .case-notes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
     .note {
       border: 1px solid var(--line);
-      background: #fbfbf6;
+      background: rgba(255, 255, 255, 0.5);
       border-radius: var(--radius);
       padding: 13px;
     }
@@ -365,7 +408,7 @@
     .rank-list { padding: 16px; display: grid; gap: 10px; }
     .rank-item {
       border: 1px solid var(--line);
-      background: #fbfbf6;
+      background: rgba(255, 255, 255, 0.5);
       border-radius: var(--radius);
       padding: 12px;
       display: grid;
@@ -376,7 +419,7 @@
       cursor: pointer;
       transition: .16s ease;
     }
-    .rank-item:hover, .rank-item.active { border-color: var(--green); background: #f0f7ef; }
+    .rank-item:hover, .rank-item.active { border-color: var(--green); background: rgba(255, 255, 255, 0.78); }
     .rank-num {
       width: 29px; height: 29px; border-radius: 999px;
       background: var(--ink); color: white;
@@ -387,7 +430,7 @@
     .rank-item span { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; line-height: 1.3; }
     .lesson-panel { padding: 22px; }
     .lesson-panel h3 { font-size: 25px; margin-bottom: 8px; }
-    .lesson-panel p { margin: 0; color: #354236; line-height: 1.67; }
+    .lesson-panel p { margin: 0; color: var(--muted); line-height: 1.67; }
     .lesson-panel ul { margin: 14px 0 0; padding-left: 19px; color: var(--muted); line-height: 1.58; font-size: 14px; }
 
     .playbook-grid {
@@ -403,13 +446,13 @@
     .stage-panel { padding: 22px; }
     .stage-box {
       border: 1px solid var(--line);
-      background: #fbfbf6;
+      background: rgba(255, 255, 255, 0.5);
       border-radius: var(--radius);
       padding: 20px;
       min-height: 185px;
     }
     .stage-box h3 { font-size: 23px; margin-bottom: 9px; }
-    .stage-box p { margin: 0; color: #354236; line-height: 1.65; }
+    .stage-box p { margin: 0; color: var(--muted); line-height: 1.65; }
     .stage-box ul { margin: 13px 0 0; padding-left: 18px; color: var(--muted); line-height: 1.58; font-size: 14px; }
 
     .decoder {
@@ -426,6 +469,24 @@
       color: var(--muted);
       font-size: 12px;
       line-height: 1.65;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .footer-links a {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.58);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 800;
+      padding: 9px 13px;
+      text-decoration: none;
     }
 
     @media (max-width: 1180px) {
@@ -453,13 +514,15 @@
   <header class="topbar">
     <div class="shell topbar-inner">
       <div class="brand">
-        <div class="mark">AI</div>
+        <a class="site-mark" href="../index.html">Dolores</a>
         <div>
           <b>AI 硬件创业者学习报告</b>
           <span>Equip me: from PM to hardware founder judgment</span>
         </div>
       </div>
       <nav class="nav">
+        <a href="../index.html">← 首页</a>
+        <a href="../projects/clawtile.html">ClawTile</a>
         <a href="#first">第一性原理</a>
         <a href="#mece">MECE 框架</a>
         <a href="#cases">竞品案例</a>
@@ -478,6 +541,10 @@
             <div class="eyebrow">Learning dossier, not application material</div>
             <h1>快速看懂 AI 硬件创业：不要先看模型，先看“现实入口”。</h1>
             <p class="lead">你要训练的是硬件创业者判断力：一个项目为什么必须有硬件？它采集了什么高价值现实输入？AI 把输入变成了什么可复用上下文？最终有没有让用户少做一步、快做一步、放心做一步？</p>
+            <div class="hero-actions" aria-label="站内跳转">
+              <a href="../index.html">返回主站首页</a>
+              <a href="../projects/clawtile.html">查看 ClawTile 项目页</a>
+            </div>
           </div>
           <div class="equation">
             <div class="eq-node"><b>1. 用户真实任务</b><span>会议、销售、访谈、学习、灵感、家庭照护。不是“想用 AI”，而是“哪件事反复消耗时间”。</span></div>
@@ -706,6 +773,10 @@
     </section>
 
     <footer class="footer shell">
+      <div class="footer-links">
+        <a href="../index.html">← 返回 Dolores 首页</a>
+        <a href="../projects/clawtile.html">查看 ClawTile 项目页</a>
+      </div>
       公开资料来源：<a href="https://www.plaud.ai/">Plaud</a>、<a href="https://docs.omi.me/doc/get_started/introduction">Omi docs</a>、<a href="https://bee.computer/">Bee</a>、<a href="https://www.limitless.ai/new">Limitless</a>、<a href="https://www.rabbit.tech/newsroom/introducing-r1">Rabbit r1 newsroom</a>、<a href="https://help.harvey.ai/articles/what-ai-models-does-harvey-use">Harvey support</a>、OpenAI Retrieval / Model Optimization 文档。竞品分析基于公开页面信息与产品定位，不把未公开技术实现当作事实。
     </footer>
   </main>
