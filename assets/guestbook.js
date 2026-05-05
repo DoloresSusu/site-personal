@@ -1,5 +1,7 @@
 (function () {
     const DEFAULT_LIMIT = 12;
+    const SUBMIT_COOLDOWN_MS = 10000;
+    const DUPLICATE_WINDOW_MS = 5 * 60 * 1000;
     const SELECT_COLUMNS = "id,name,message,page,tag,created_at";
 
     function getConfig() {
@@ -48,6 +50,73 @@
         root.querySelectorAll("[data-guestbook-form] input, [data-guestbook-form] textarea, [data-guestbook-form] button").forEach((field) => {
             field.disabled = !enabled;
         });
+    }
+
+    function getStorageKey(root) {
+        return `dolo_guestbook_recent_submit:${root.dataset.guestbookPage || location.pathname || "homepage"}`;
+    }
+
+    function readRecentSubmit(root) {
+        try {
+            return JSON.parse(localStorage.getItem(getStorageKey(root)) || "{}");
+        } catch {
+            return {};
+        }
+    }
+
+    function rememberSubmit(root, signature) {
+        try {
+            localStorage.setItem(getStorageKey(root), JSON.stringify({
+                signature,
+                timestamp: Date.now()
+            }));
+        } catch {
+            // Storage can be unavailable in strict privacy modes. The server insert still works.
+        }
+    }
+
+    function getDuplicateWarning(root, signature) {
+        const recent = readRecentSubmit(root);
+        const elapsed = Date.now() - Number(recent.timestamp || 0);
+
+        if (elapsed >= 0 && elapsed < SUBMIT_COOLDOWN_MS) {
+            const seconds = Math.ceil((SUBMIT_COOLDOWN_MS - elapsed) / 1000);
+            return `刚刚已经提交过啦，${seconds} 秒后再试。`;
+        }
+
+        if (recent.signature === signature && elapsed >= 0 && elapsed < DUPLICATE_WINDOW_MS) {
+            return "这条留言已经提交过啦，换一句再发。";
+        }
+
+        return "";
+    }
+
+    function makeSignature(page, name, message) {
+        return [page, name, message]
+            .map((item) => String(item || "").trim().replace(/\s+/g, " ").toLowerCase())
+            .join("|");
+    }
+
+    function startSubmitCooldown(button) {
+        if (!button) return;
+        const originalText = button.dataset.originalText || button.textContent;
+        button.dataset.originalText = originalText;
+        button.disabled = true;
+
+        let remaining = Math.ceil(SUBMIT_COOLDOWN_MS / 1000);
+        button.textContent = `${remaining} 秒后可再提交`;
+
+        const timer = window.setInterval(() => {
+            remaining -= 1;
+            if (remaining > 0) {
+                button.textContent = `${remaining} 秒后可再提交`;
+                return;
+            }
+
+            window.clearInterval(timer);
+            button.textContent = originalText;
+            button.disabled = false;
+        }, 1000);
     }
 
     function renderMessages(root, messages) {
@@ -139,6 +208,7 @@
         const name = String(formData.get("name") || "").trim();
         const message = String(formData.get("message") || "").trim();
         const page = root.dataset.guestbookPage || location.pathname || "homepage";
+        const signature = makeSignature(page, name, message);
 
         if (name.length < 1 || name.length > 40) {
             setStatus(root, "名字请控制在 1-40 个字符。", "error");
@@ -150,7 +220,14 @@
             return;
         }
 
+        const duplicateWarning = getDuplicateWarning(root, signature);
+        if (duplicateWarning) {
+            setStatus(root, duplicateWarning, "error");
+            return;
+        }
+
         const button = form.querySelector("button[type='submit']");
+        let keepButtonDisabled = false;
         if (button) button.disabled = true;
         setStatus(root, "正在提交...", "neutral");
 
@@ -160,11 +237,14 @@
                 headers: { Prefer: "return=minimal" },
                 body: JSON.stringify({ name, message, page, status: "visible" })
             });
+            rememberSubmit(root, signature);
             form.reset();
-            setStatus(root, "已发布，谢谢你留下这一句。", "success");
             await loadMessages(root);
+            setStatus(root, "已发布，谢谢你留下这一句。", "success");
+            keepButtonDisabled = true;
+            startSubmitCooldown(button);
         } finally {
-            if (button) button.disabled = false;
+            if (button && !keepButtonDisabled) button.disabled = false;
         }
     }
 
