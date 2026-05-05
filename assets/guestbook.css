@@ -1,0 +1,209 @@
+.guestbook-section {
+    position: relative;
+}
+
+.guestbook-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 0.86fr) minmax(300px, 0.52fr);
+    gap: 18px;
+    align-items: start;
+}
+
+.guestbook-intro {
+    display: grid;
+    gap: 18px;
+}
+
+.guestbook-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.guestbook-card,
+.guestbook-empty,
+.guestbook-form-card {
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.52);
+    border-radius: 24px;
+    box-shadow: 0 18px 42px rgba(77, 52, 29, 0.08);
+}
+
+.guestbook-card {
+    display: grid;
+    gap: 14px;
+    min-height: 168px;
+    padding: 18px;
+}
+
+.guestbook-card-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.guestbook-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    display: inline-grid;
+    place-items: center;
+    flex: 0 0 auto;
+    background: #1f1914;
+    color: #fffaf5;
+    font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+    font-size: 1.34rem;
+    font-weight: 700;
+}
+
+.guestbook-card strong,
+.guestbook-empty strong,
+.guestbook-form-card strong {
+    display: block;
+    color: var(--text, var(--ink));
+}
+
+.guestbook-card time,
+.guestbook-empty span,
+.guestbook-note,
+.guestbook-status {
+    color: var(--muted);
+    font-size: 0.86rem;
+}
+
+.guestbook-card p {
+    margin: 0;
+    color: var(--text, var(--ink));
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.guestbook-empty {
+    min-height: 168px;
+    display: grid;
+    align-content: center;
+    gap: 8px;
+    padding: 22px;
+}
+
+.guestbook-form-card {
+    position: sticky;
+    top: 92px;
+    padding: 20px;
+}
+
+.guestbook-form-card form {
+    display: grid;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.guestbook-field {
+    display: grid;
+    gap: 7px;
+}
+
+.guestbook-field span {
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-weight: 800;
+}
+
+.guestbook-field input,
+.guestbook-field textarea {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: rgba(255, 250, 245, 0.78);
+    color: var(--text, var(--ink));
+    font: inherit;
+    line-height: 1.5;
+    padding: 12px 13px;
+    outline: none;
+    transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.guestbook-field textarea {
+    min-height: 132px;
+    resize: vertical;
+}
+
+.guestbook-field input:focus,
+.guestbook-field textarea:focus {
+    border-color: var(--accent, var(--green));
+    background: rgba(255, 250, 245, 0.96);
+    box-shadow: 0 0 0 4px rgba(128, 83, 63, 0.1);
+}
+
+.guestbook-field input:disabled,
+.guestbook-field textarea:disabled {
+    cursor: not-allowed;
+    opacity: 0.62;
+}
+
+.guestbook-submit {
+    border: 0;
+    border-radius: 999px;
+    background: var(--text, var(--ink));
+    color: #fffaf5;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 800;
+    padding: 12px 16px;
+    transition: transform 160ms ease, opacity 160ms ease, box-shadow 160ms ease;
+}
+
+.guestbook-submit:hover,
+.guestbook-submit:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 38px rgba(77, 52, 29, 0.14);
+}
+
+.guestbook-submit:disabled {
+    cursor: not-allowed;
+    opacity: 0.58;
+    transform: none;
+    box-shadow: none;
+}
+
+.guestbook-note {
+    margin: 0;
+    line-height: 1.55;
+}
+
+.guestbook-status {
+    min-height: 1.4em;
+    margin: 0;
+}
+
+.guestbook-status[data-tone="success"] {
+    color: #4f714b;
+}
+
+.guestbook-status[data-tone="error"] {
+    color: #9b4f43;
+}
+
+@media (max-width: 980px) {
+    .guestbook-shell,
+    .guestbook-list {
+        grid-template-columns: 1fr;
+    }
+
+    .guestbook-form-card {
+        position: static;
+    }
+}
+
+@media (max-width: 520px) {
+    .guestbook-card,
+    .guestbook-empty,
+    .guestbook-form-card {
+        border-radius: 20px;
+        padding: 16px;
+    }
+
+    .guestbook-card {
+        min-height: auto;
+    }
+}

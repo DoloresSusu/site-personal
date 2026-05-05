@@ -26,6 +26,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Noto+Serif+SC:wght@400;500;600;700&amp;display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="../assets/guestbook.css">
   <script defer src="/_vercel/insights/script.js"></script>
   <style>
     :root {
@@ -529,6 +530,7 @@
         <a href="#lessons">参考优先级</a>
         <a href="#playbook">创始人手册</a>
         <a href="#roadmap">学习路径</a>
+        <a href="#guestbook">留言</a>
       </nav>
     </div>
   </header>
@@ -772,6 +774,41 @@
       </div>
     </section>
 
+    <section class="guestbook-section" id="guestbook" data-guestbook data-guestbook-page="ai-hardware-framework">
+      <div class="shell">
+        <div class="section-title">
+          <h2>读后留言</h2>
+          <p>如果这个框架帮你看清了某个 AI 硬件项目，也欢迎留下一句反馈。后面来的读者也能看到你的判断。</p>
+        </div>
+        <div class="guestbook-shell">
+          <div class="guestbook-intro">
+            <div class="guestbook-list" data-guestbook-list>
+              <article class="guestbook-empty">
+                <span>留言读取中</span>
+                <strong>正在加载公开留言。</strong>
+              </article>
+            </div>
+          </div>
+          <aside class="guestbook-form-card">
+            <strong>留下你的反馈</strong>
+            <p class="guestbook-note">可以写你最有启发的一点、不同意的地方，或你希望继续拆解的 AI 硬件案例。</p>
+            <form data-guestbook-form>
+              <label class="guestbook-field">
+                <span>名字 / 昵称</span>
+                <input name="name" type="text" maxlength="40" autocomplete="name" placeholder="你的名字" required>
+              </label>
+              <label class="guestbook-field">
+                <span>留言</span>
+                <textarea name="message" maxlength="500" placeholder="读完之后，你想补充或反馈什么？" required></textarea>
+              </label>
+              <button class="guestbook-submit" type="submit">留下留言</button>
+              <p class="guestbook-status" data-guestbook-status aria-live="polite"></p>
+            </form>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <footer class="footer shell">
       <div class="footer-links">
         <a href="../index.html">← 返回 Dolores 首页</a>
@@ -781,6 +818,8 @@
     </footer>
   </main>
 
+  <script src="../assets/guestbook-config.js"></script>
+  <script src="../assets/guestbook.js"></script>
   <script>
     const domains = [
       {

@@ -31,6 +31,7 @@
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Noto+Serif+SC:wght@400;500;600;700&amp;display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/guestbook.css">
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -62,6 +63,7 @@
                 <a href="#life">Life</a>
                 <a href="#projects">Projects</a>
                 <a href="learning/ai-hardware-framework.html">AI 框架</a>
+                <a href="#guestbook">留言</a>
                 <a class="language-switch" href="en/">EN</a>
             </nav>
         </header>
@@ -303,8 +305,43 @@
                 </div>
             </section>
 
+            <section class="guestbook-section section-grid" id="guestbook" data-guestbook data-guestbook-page="homepage">
+                <div class="section-heading">
+                    <p class="eyebrow">04 / Guestbook</p>
+                    <h2>看完这个网站，也欢迎留下一句话。</h2>
+                </div>
+                <div class="guestbook-shell">
+                    <div class="guestbook-intro">
+                        <div class="guestbook-list" data-guestbook-list>
+                            <article class="guestbook-empty">
+                                <span>留言读取中</span>
+                                <strong>正在加载公开留言。</strong>
+                            </article>
+                        </div>
+                    </div>
+                    <aside class="guestbook-form-card">
+                        <strong>给 Dolores 留言</strong>
+                        <p class="guestbook-note">可以写下你对网站、项目、AI 硬件或内容方向的反馈。留言会公开展示，请不要填写隐私信息。</p>
+                        <form data-guestbook-form>
+                            <label class="guestbook-field">
+                                <span>名字 / 昵称</span>
+                                <input name="name" type="text" maxlength="40" autocomplete="name" placeholder="你的名字" required>
+                            </label>
+                            <label class="guestbook-field">
+                                <span>留言</span>
+                                <textarea name="message" maxlength="500" placeholder="想对我或这个网站说点什么？" required></textarea>
+                            </label>
+                            <button class="guestbook-submit" type="submit">留下留言</button>
+                            <p class="guestbook-status" data-guestbook-status aria-live="polite"></p>
+                        </form>
+                    </aside>
+                </div>
+            </section>
+
         </main>
     </div>
+    <script src="assets/guestbook-config.js"></script>
+    <script src="assets/guestbook.js"></script>
     <script>
         document.querySelectorAll('.carousel-button').forEach((button) => {
             button.addEventListener('click', () => {
