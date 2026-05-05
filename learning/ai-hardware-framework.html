@@ -413,26 +413,67 @@
       border-radius: var(--radius);
       padding: 12px;
       display: grid;
-      grid-template-columns: 32px 1fr auto;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: center;
+      text-align: left;
+      transition: .16s ease;
+    }
+    .rank-item:hover, .rank-item.active { border-color: var(--green); background: rgba(255, 255, 255, 0.78); }
+    .rank-main {
+      border: 0;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 32px minmax(0, 1fr) auto;
       gap: 10px;
       align-items: center;
       text-align: left;
       cursor: pointer;
-      transition: .16s ease;
     }
-    .rank-item:hover, .rank-item.active { border-color: var(--green); background: rgba(255, 255, 255, 0.78); }
     .rank-num {
       width: 29px; height: 29px; border-radius: 999px;
       background: var(--ink); color: white;
       display: grid; place-items: center;
       font-size: 12px; font-weight: 900;
     }
-    .rank-item b { display: block; font-size: 15px; }
-    .rank-item span { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; line-height: 1.3; }
+    .rank-main b { display: block; font-size: 15px; }
+    .rank-main span { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; line-height: 1.3; }
+    .rank-source {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 250, 245, 0.86);
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 900;
+      padding: 7px 10px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: .16s ease;
+    }
+    .rank-source:hover {
+      border-color: var(--green);
+      background: var(--green);
+      color: #fffaf5;
+    }
     .lesson-panel { padding: 22px; }
     .lesson-panel h3 { font-size: 25px; margin-bottom: 8px; }
     .lesson-panel p { margin: 0; color: var(--muted); line-height: 1.67; }
     .lesson-panel ul { margin: 14px 0 0; padding-left: 19px; color: var(--muted); line-height: 1.58; font-size: 14px; }
+    .lesson-source { margin-top: 16px; }
+    .lesson-source a {
+      display: inline-flex;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.56);
+      color: var(--green);
+      font-weight: 900;
+      font-size: 13px;
+      padding: 9px 12px;
+      text-decoration: none;
+    }
 
     .playbook-grid {
       display: grid;
@@ -508,6 +549,9 @@
       .first-grid, .playbook-grid, .decoder, .metrics, .check-grid, .case-notes { grid-template-columns: 1fr; }
       .matrix { height: 395px; }
       .dot::after { font-size: 10px; }
+      .rank-item { grid-template-columns: 1fr; align-items: start; }
+      .rank-main { width: 100%; grid-template-columns: 32px minmax(0, 1fr) auto; }
+      .rank-source { justify-self: start; margin-left: 42px; }
     }
   </style>
 </head>
@@ -875,6 +919,7 @@
     const cases = [
       {
         id: "plaud", name: "Plaud", filter: "category", tag: "品类对照", role: "最直接参考",
+        source: { title: "Plaud Note 官方产品页", url: "https://www.plaud.ai/pages/plaud-note-ai-notetaking-device" },
         x: 43, y: 60, color: "#2e5f90",
         summary: "Plaud 是 AI note-taking 硬件的成熟参照：录音卡、可穿戴 NotePin、Note Pro、Desktop，加上 Plaud Intelligence、职业场景模板、AI 会员计划和导出集成。",
         sells: "卖的不是录音，而是“你可以专注对话，后续纪要和跟进由系统处理”。",
@@ -886,6 +931,7 @@
       },
       {
         id: "omi", name: "Omi", filter: "open", tag: "开放生态", role: "战略参考",
+        source: { title: "Omi 官方文档 Introduction", url: "https://docs.omi.me/doc/get_started/introduction" },
         x: 86, y: 70, color: "#1d6a44",
         summary: "Omi 官方定位为 open-source AI wearable，强调硬件、固件、App、后端开源，自托管/云端、实时转写、AI memory、22+ integrations 和应用市场。",
         sells: "卖的是“你可以拥有并改造自己的 AI wearable 系统”，不是单一硬件。",
@@ -897,6 +943,7 @@
       },
       {
         id: "limitless", name: "Limitless", filter: "memory", tag: "记忆产品", role: "产品能力参考",
+        source: { title: "Limitless Developer Platform", url: "https://www.limitless.ai/developers" },
         x: 50, y: 78, color: "#b27b24",
         summary: "Limitless 强调 Remember Everything、smart summaries、perfect recall、automatic speaker recognition、100+ languages，并提供 API / MCP 让记忆可编程。",
         sells: "卖的是“对话不会丢失，未来可以搜索、回放、追问和接入工具”。",
@@ -908,6 +955,7 @@
       },
       {
         id: "bee", name: "Bee", filter: "memory", tag: "个人记忆", role: "愿景参考",
+        source: { title: "Bee 官方产品页", url: "https://bee.computer/" },
         x: 35, y: 67, color: "#a34e3b",
         summary: "Bee 是 wearable personal AI，把 conversations、tasks、places 转成 summaries、personal insights、timely reminders，并强调学习用户模式、偏好和关系。",
         sells: "卖的是“个人生活和工作的 ambient memory”，让 AI 更懂你的日常。",
@@ -919,6 +967,7 @@
       },
       {
         id: "rabbit", name: "Rabbit r1", filter: "action", tag: "行动叙事", role: "远远借鉴",
+        source: { title: "Rabbit r1 官方发布文", url: "https://www.rabbit.tech/newsroom/introducing-r1" },
         x: 31, y: 88, color: "#d05a3a",
         summary: "Rabbit r1 的官方叙事是从 words to action，用 LAM 让系统理解意图并操作 App / 网站，主张 app-free online experience。",
         sells: "卖的是“AI 不只是回答，而是替你完成数字任务”。",
@@ -930,6 +979,7 @@
       },
       {
         id: "harvey", name: "Harvey", filter: "method", tag: "AI 方法论", role: "非硬件案例",
+        source: { title: "Harvey 模型与评测说明", url: "https://help.harvey.ai/articles/what-ai-models-does-harvey-use" },
         x: 56, y: 88, color: "#625873",
         summary: "Harvey 不是硬件项目，但它展示了专业 AI 产品的方法：多模型系统拆分任务、选择模型、综合输出，并用 BigLaw Bench 和产品数据评估效果。",
         sells: "卖的是“可信的专业工作成果”，不是某一个模型。",
@@ -1050,13 +1100,19 @@
     function renderRanks() {
       const list = document.getElementById("rankList");
       cases.filter(c => c.rank > 0).sort((a, b) => a.rank - b.rank).forEach(item => {
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "rank-item";
-        btn.dataset.id = item.id;
-        btn.innerHTML = `<div class="rank-num">${item.rank}</div><div><b>${item.name}</b><span>${item.role}｜${item.tag}</span></div><div class="badge">${item.filter}</div>`;
-        btn.addEventListener("click", () => selectRank(item.id));
-        list.appendChild(btn);
+        const row = document.createElement("article");
+        row.className = "rank-item";
+        row.dataset.id = item.id;
+        row.innerHTML = `
+          <button class="rank-main" type="button">
+            <div class="rank-num">${item.rank}</div>
+            <div><b>${item.name}</b><span>${item.role}｜${item.tag}</span></div>
+            <div class="badge">${item.filter}</div>
+          </button>
+          <a class="rank-source" href="${item.source.url}" target="_blank" rel="noopener noreferrer" aria-label="打开 ${item.source.title}">推荐阅读 ↗</a>
+        `;
+        row.querySelector(".rank-main").addEventListener("click", () => selectRank(item.id));
+        list.appendChild(row);
       });
       selectRank("plaud");
     }
@@ -1073,6 +1129,7 @@
           <li><strong>你该学什么：</strong>${item.learn}</li>
           <li><strong>不要误学什么：</strong>${item.avoid}</li>
         </ul>
+        <div class="lesson-source"><a href="${item.source.url}" target="_blank" rel="noopener noreferrer">推荐阅读：${item.source.title} ↗</a></div>
       `;
       selectCase(id);
     }
