@@ -91,13 +91,14 @@
             }
         });
 
+        const body = await response.text();
+
         if (!response.ok) {
-            const body = await response.text();
             throw new Error(body || `Supabase request failed: ${response.status}`);
         }
 
-        if (response.status === 204) return null;
-        return response.json();
+        if (!body) return null;
+        return JSON.parse(body);
     }
 
     async function loadMessages(root) {
