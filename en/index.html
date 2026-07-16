@@ -5,45 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Dolores Su | AI Product Builder</title>
-    <meta name="description" content="Dolores Su's personal website: AI products, ClawTile, SkillFit, playful web experiments, Hackathon Weekly, and creative life.">
+    <meta name="description" content="Dolores Su's personal website: AI products, ClawTile, playful web experiments, Hackathon Weekly, life, and creative work.">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#f4efe8">
     <link rel="canonical" href="https://doloressu.com/en/">
     <link rel="alternate" type="text/plain" href="https://doloressu.com/llms.txt" title="LLM-readable site summary">
     <link rel="alternate" hreflang="zh-Hans" href="https://doloressu.com/">
     <link rel="alternate" hreflang="en" href="https://doloressu.com/en/">
+    <link rel="alternate" hreflang="es" href="https://doloressu.com/es/">
+    <link rel="alternate" hreflang="pt" href="https://doloressu.com/pt/">
+    <link rel="alternate" hreflang="fr" href="https://doloressu.com/fr/">
     <link rel="alternate" hreflang="x-default" href="https://doloressu.com/">
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Dolores Su">
     <meta property="og:title" content="Dolores Su | AI Product Builder">
-    <meta property="og:description" content="AI products, ClawTile, SkillFit, playful web experiments, Hackathon Weekly, and creative life.">
+    <meta property="og:description" content="Dolores Su's personal website: AI products, ClawTile, playful web experiments, Hackathon Weekly, life, and creative work.">
     <meta property="og:url" content="https://doloressu.com/en/">
     <meta property="og:image" content="https://doloressu.com/assets/life-2.jpg">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dolores Su | AI Product Builder">
+    <meta name="twitter:description" content="I build AI products—and take creating and living seriously.">
+    <meta name="twitter:image" content="https://doloressu.com/assets/life-2.jpg">
     <link rel="icon" type="image/png" sizes="128x128" href="../assets/favicon-128.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Noto+Serif+SC:wght@400;500;600;700&amp;display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Noto+Serif+SC:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Dolores Su",
-            "alternateName": ["多乐", "Dolo"],
-            "url": "https://doloressu.com/en/",
-            "jobTitle": "AI Product Builder",
-            "description": "AI product builder, ClawTile co-founder, and Hackathon Weekly community builder.",
-            "sameAs": [
-                "https://github.com/DoloresSusu",
-                "https://www.linkedin.com/in/doloressu/",
-                "https://hackathonweekly.com"
-            ]
-        }
-    </script>
+    <link rel="stylesheet" href="../assets/guestbook.css">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Dolores Su","alternateName":["多乐","Dolores Su","Dolo"],"url":"https://doloressu.com/en/","jobTitle":"AI Product Builder","description":"AI product builder, ClawTile co-founder, and Hackathon Weekly community builder.","sameAs":["https://github.com/DoloresSusu","https://www.linkedin.com/in/doloressu/","https://hackathonweekly.com"]}</script>
     <script defer src="/_vercel/insights/script.js"></script>
 </head>
 
@@ -54,12 +44,35 @@
 
         <header class="site-header">
             <a class="site-mark" href="#top">Dolores</a>
-            <nav class="site-nav" aria-label="Primary">
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="projects/skillfit.html">SkillFit</a>
-                <a class="language-switch" href="../">中文</a>
-            </nav>
+            <div class="header-actions">
+                <nav class="site-nav" aria-label="Primary">
+                    <a href="#about">About</a>
+                    <a href="#life">Life</a>
+                    <a href="#projects">Projects</a>
+                    <a href="../learning/ai-hardware-framework.html">AI Framework</a>
+                    <a href="#guestbook">Guestbook</a>
+                </nav>
+                <details class="language-menu">
+                <summary aria-label="Choose language"><span>EN</span><i aria-hidden="true"></i></summary>
+                <div class="language-menu-panel">
+                    <a href="../index.html" lang="zh-CN">
+                        <span>中文</span><strong>中文</strong>
+                    </a>
+                    <a href="../en/index.html" lang="en" aria-current="page">
+                        <span>English</span><strong>EN</strong>
+                    </a>
+                    <a href="../es/index.html" lang="es">
+                        <span>Español</span><strong>ES</strong>
+                    </a>
+                    <a href="../pt/index.html" lang="pt-BR">
+                        <span>Português</span><strong>PT</strong>
+                    </a>
+                    <a href="../fr/index.html" lang="fr">
+                        <span>Français</span><strong>FR</strong>
+                    </a>
+                </div>
+            </details>
+            </div>
         </header>
 
         <main id="top">
@@ -67,22 +80,16 @@
                 <div class="hero-copy">
                     <p class="eyebrow">AI Product / Community / Creative Tech</p>
                     <h1>Dolores Su</h1>
-                    <p class="hero-lead">I build AI products and turn loose ideas into visible experiments.</p>
-                    <p class="hero-body">
-                        I work across AI hardware, agent workflows, tool sites, community building, and playful product experiments.
-                        My current focus is making AI more usable, more human, and easier to evaluate in real workflows.
-                    </p>
+                    <p class="hero-lead">I build AI products—and take creating and living seriously.</p>
+                    <p class="hero-body">Co-founder of ClawTile, an AI voice-capture hardware product, and community lead of Hackathon Weekly, an AI community with more than 10,000 members. Former product and project manager for global businesses at major internet companies. MSc in Finance from CUHK-Shenzhen.</p>
                     <p class="hero-manifesto">Life is short, take chances, be positive, and live now.</p>
                 </div>
-
                 <div class="hero-visual">
                     <figure class="portrait-card portrait-main">
-                        <img src="../assets/life-2.jpg" alt="Dolores in the mountains at sunset" width="1050" height="1400"
-                            fetchpriority="high" decoding="async">
+                        <img src="../assets/life-2.jpg" alt="Dolores in the mountains at sunset" width="1050" height="1400" fetchpriority="high" decoding="async">
                     </figure>
                     <figure class="portrait-card portrait-accent">
-                        <img src="../assets/life-5.jpg" alt="Dolores on a city street at sunset" width="1050" height="1400"
-                            loading="lazy" decoding="async">
+                        <img src="../assets/life-5.jpg" alt="Dolores on a city street at sunset" width="1050" height="1400" loading="lazy" decoding="async">
                     </figure>
                 </div>
             </section>
@@ -90,54 +97,103 @@
             <section class="about section-grid" id="about">
                 <div class="section-heading">
                     <p class="eyebrow">01 / About</p>
-                    <h2>Product judgment, AI-native execution, and a creator's bias for shipping.</h2>
+                    <h2>Meet the person, then the work.</h2>
                 </div>
                 <div class="about-content">
-                    <p>
-                        I am an AI product builder with a PM background. I care about turning abstract AI capability into
-                        workflows, interfaces, and artifacts that people can actually use.
-                    </p>
-                    <p>
-                        My past work spans cross-border product and project work at companies including SHEIN and Lazada.
-                        Today, I am building small AI products, running community experiments, and documenting what AI-native PM work can look like.
-                    </p>
+                    <p>I’m Dolores, an ENFJ working across AI products, content experiments, and community. I enjoy turning abstract ideas into tangible work, and I see taste, judgment, and the ability to act as different sides of the same quality.</p>
+                    <p>I previously worked on global product initiatives at SHEIN and Lazada, and gained experience at Tencent, Meituan, CICC, and Deloitte. Today I care most about turning AI into products and experiences that are useful, beautiful, and unmistakably human.</p>
                 </div>
                 <div class="about-links">
                     <a href="mailto:sumengxinuibe@163.com">sumengxinuibe@163.com</a>
                     <a href="https://github.com/DoloresSusu" target="_blank" rel="noopener noreferrer">GitHub / DoloresSusu</a>
                     <a href="https://www.linkedin.com/in/doloressu/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 </div>
+                <div class="about-qr-strip">
+                    <figure class="qr-item"><img src="../assets/wechat-qr.jpg" alt="Dolores's WeChat QR code" width="855" height="852" loading="lazy" decoding="async"><figcaption>WeChat</figcaption></figure>
+                    <figure class="qr-item"><img src="../assets/wechat-channel-qr.png" alt="WeChat Official Account QR code" width="328" height="334" loading="lazy" decoding="async"><figcaption>Official Account</figcaption></figure>
+                    <figure class="qr-item"><img src="../assets/xiaohongshu-qr.jpeg" alt="Xiaohongshu QR code" width="253" height="256" loading="lazy" decoding="async"><figcaption>Xiaohongshu</figcaption></figure>
+                </div>
+            </section>
+
+            <section class="life section-grid" id="life">
+                <div class="section-heading"><p class="eyebrow">02 / Life</p><h2>Loving life means paying close attention to the moment.</h2></div>
+                <div class="life-intro"><p>Life is a vivid, magnificent adventure. I love windy places, everyday scenes with a cinematic quality, and people and ideas that carry both youthful spirit and real vitality.</p></div>
+                <div class="carousel-shell">
+                    <button class="carousel-button" type="button" aria-label="Previous photo" data-target="life-carousel" data-direction="prev">‹</button>
+                    <div class="life-gallery" id="life-carousel">
+                        <figure class="gallery-item"><img src="../assets/life-1.jpg" alt="Dolores in front of supermarket shelves" width="1050" height="1400" loading="lazy" decoding="async"><figcaption>Ease can be a form of judgment.</figcaption></figure>
+                        <figure class="gallery-item"><img src="../assets/life-2.jpg" alt="Dolores in the mountains at sunset" width="1050" height="1400" loading="lazy" decoding="async"><figcaption>I love windy places—and turning ideas into things.</figcaption></figure>
+                        <figure class="gallery-item"><img src="../assets/life-3.jpg" alt="Dolores beside a white cat sculpture" width="1050" height="1400" loading="lazy" decoding="async"><figcaption>I have always cared about image, line, and proportion.</figcaption></figure>
+                        <figure class="gallery-item"><img src="../assets/life-4.jpg" alt="Dolores hiking on a mountain trail" width="1050" height="1400" loading="lazy" decoding="async"><figcaption>Drawn to youthful spirit and vitality.</figcaption></figure>
+                        <figure class="gallery-item"><img src="../assets/life-5.jpg" alt="Dolores on a city street at sunset" width="1050" height="1400" loading="lazy" decoding="async"><figcaption>Outside work, I take becoming an interesting person seriously.</figcaption></figure>
+                    </div>
+                    <button class="carousel-button" type="button" aria-label="Next photo" data-target="life-carousel" data-direction="next">›</button>
+                </div>
             </section>
 
             <section class="projects section-grid" id="projects">
-                <div class="section-heading">
-                    <p class="eyebrow">02 / Projects</p>
-                    <h2>Current public experiments.</h2>
-                </div>
-                <div class="project-grid">
-                    <a class="project-card" href="projects/clawtile.html">
-                        <img src="../assets/clawtile-price-board.png" alt="ClawTile AI hardware project" width="1440" height="1440" loading="lazy">
+                <div class="section-heading"><p class="eyebrow">03 / Projects</p><h2>I don’t just share ideas. I make them real.</h2></div>
+                <article class="project-card project-feature">
+                    <div class="project-copy">
+                        <p class="project-kicker">Featured Project</p>
                         <h3>ClawTile AI Hardware</h3>
-                        <p>An AI hardware experiment around long-form voice input, result display, and more natural AI interaction loops.</p>
-                    </a>
-                    <a class="project-card" href="projects/skillfit.html">
-                        <div class="skillfit-mini">
-                            <span>Task</span>
-                            <strong>Which AI Skill should I use?</strong>
-                            <small>Task fit / evidence / safety / test prompt</small>
+                        <p class="project-summary">An AI hardware experiment for long-form voice capture and on-device result review, helping people collect naturally and bring structured outcomes back into view.</p>
+                        <ul class="project-points"><li>I led product definition, concept communication, and external storytelling.</li><li>The goal is not simply to make hardware, but to place AI inside a more natural user journey.</li><li>This project best represents how I turn an idea into a product prototype.</li></ul>
+                        <div class="project-links"><a href="projects/clawtile.html">View case study</a><a href="../learning/ai-hardware-framework.html">Open the AI hardware framework</a></div>
+                    </div>
+                    <div class="project-media project-clawtile">
+                        <img class="card-shot" src="../assets/clawtile-price-board.png" alt="ClawTile product presentation" width="1440" height="1440" loading="eager" decoding="async">
+                        <img class="floating-shot" src="../assets/clawtile-prototype-photo.jpg" alt="ClawTile prototype" width="831" height="1120" loading="eager" decoding="async">
+                    </div>
+                </article>
+
+                <a class="learning-bridge" href="../learning/ai-hardware-framework.html" aria-label="Open the field guide for AI hardware builders">
+                    <div class="learning-bridge-copy"><p class="project-kicker">Learning Report / AI Hardware</p><h3>A Field Guide for AI Hardware Builders</h3><p>A first-principles, MECE analysis of Plaud, Omi, Bee, Limitless, Rabbit, Harvey, and ClawTile—designed to assess demand, hardware necessity, the AI loop, business models, and risk boundaries.</p></div>
+                    <div class="learning-bridge-meta"><span><strong>4</strong>decision areas</span><span><strong>6</strong>product cases</span><span><strong>30</strong>day learning path</span></div>
+                    <div class="learning-bridge-action">Open the report →</div>
+                </a>
+
+                <div class="project-grid">
+                    <article class="project-card"><div class="project-copy">
+                        <p class="project-kicker">Tool Site</p><h3>SkillFit AI Skill Advisor</h3><p class="project-summary">A lightweight tool that starts with a real task and helps people decide which AI Skill fits best. It explores a new discovery and evaluation layer for the AI Skill era.</p>
+                        <ul class="project-points"><li>Not another store, but a decision layer between a task and the right Skill.</li><li>SEO and AEO pages capture real search intent.</li><li>User submissions and a Skill Arena can support community co-creation.</li></ul>
+                        <div class="project-links"><a href="projects/skillfit.html">View case study</a><a href="https://get-skill-fit.com/" target="_blank" rel="noopener noreferrer">Open SkillFit</a></div>
+                    </div></article>
+                    <article class="project-card"><div class="project-copy">
+                        <p class="project-kicker">Playful Build</p><h3>Web Games / Mini-App Experiments</h3><p class="project-summary">I quickly turn small ideas into playable web experiments to test feeling, interaction, and storytelling rather than leaving them as concepts.</p>
+                        <div class="game-preview-grid">
+                            <a class="game-preview-card" href="../games/endless_glide/index.html" target="_blank" rel="noopener noreferrer" aria-label="Endless Glide"><div class="game-cover"><img src="../assets/endless-glide-thumb.jpg" alt="Endless Glide homepage thumbnail" width="900" height="675" loading="eager" decoding="async"></div><div class="game-preview-meta"><strong>Endless Glide</strong><span>↗ Play now</span></div></a>
+                            <a class="game-preview-card" href="../games/zootopia_match3/index.html" target="_blank" rel="noopener noreferrer" aria-label="Zootopia Match 3"><div class="game-cover"><img src="../assets/zootopia-match3-thumb.jpg" alt="Zootopia Match 3 homepage thumbnail" width="900" height="675" loading="eager" decoding="async"></div><div class="game-preview-meta"><strong>Zootopia Match 3</strong><span>↗ Play now</span></div></a>
                         </div>
-                        <h3>SkillFit</h3>
-                        <p>A task-to-skill advisor that helps users choose AI Agent Skills based on real tasks instead of popularity charts.</p>
-                    </a>
-                    <a class="project-card" href="projects/playful-builds.html">
-                        <img src="../assets/endless-glide-thumb.jpg" alt="Playable web game thumbnail" width="900" height="675" loading="lazy">
-                        <h3>Playful Builds</h3>
-                        <p>Small web games and mini-app experiments for testing interaction, visual taste, and AI-assisted development speed.</p>
-                    </a>
+                        <div class="project-links"><a href="projects/playful-builds.html">View experiments</a></div>
+                    </div></article>
+                    <article class="project-card"><div class="project-copy">
+                        <p class="project-kicker">Community</p><h3>Hackathon Weekly Community</h3><p class="project-summary">Alongside product work, I build communities and connections. Hackathon Weekly is more than a series of events—it brings people with ideas together and helps action happen.</p>
+                        <ul class="project-points"><li>I lead and organize the community.</li><li>It reflects my ability to connect, mobilize, and sustain momentum.</li><li>Turning online ideas into offline relationships creates real value.</li></ul>
+                        <div class="project-links"><a href="https://hackathonweekly.com" target="_blank" rel="noopener noreferrer">Hackathon Weekly</a></div>
+                    </div></article>
+                </div>
+            </section>
+
+            <section class="guestbook-section section-grid" id="guestbook" data-guestbook data-guestbook-locale="en" data-guestbook-page="homepage">
+                <div class="section-heading"><p class="eyebrow">04 / Guestbook</p><h2>If the site sparked a thought, leave a note.</h2></div>
+                <div class="guestbook-shell">
+                    <div class="guestbook-intro"><div class="guestbook-list" data-guestbook-list><article class="guestbook-empty"><span>Loading messages</span><strong>Fetching public guestbook entries.</strong></article></div></div>
+                    <aside class="guestbook-form-card">
+                        <strong>Leave Dolores a note</strong><p class="guestbook-note">Share feedback on the site, projects, AI hardware, or content direction. Messages are public, so please don’t include private information.</p>
+                        <form data-guestbook-form>
+                            <label class="guestbook-field"><span>Name</span><input name="name" type="text" maxlength="40" autocomplete="name" placeholder="Your name" required></label>
+                            <label class="guestbook-field"><span>Message</span><textarea name="message" maxlength="500" placeholder="What would you like to say?" required></textarea></label>
+                            <button class="guestbook-submit" type="submit">Post message</button>
+                            <p class="guestbook-status" data-guestbook-status aria-live="polite"></p>
+                        </form>
+                    </aside>
                 </div>
             </section>
         </main>
     </div>
+    <script src="../assets/guestbook-config.js"></script>
+    <script src="../assets/guestbook.js"></script>
+    <script src="../assets/site.js"></script>
 </body>
-
 </html>

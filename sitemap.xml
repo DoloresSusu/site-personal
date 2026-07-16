@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://doloressu.com/</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-07-16</lastmod>
   </url>
   <url>
     <loc>https://doloressu.com/projects/clawtile.html</loc>
@@ -22,7 +22,19 @@
   </url>
   <url>
     <loc>https://doloressu.com/en/</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-07-16</lastmod>
+  </url>
+  <url>
+    <loc>https://doloressu.com/es/</loc>
+    <lastmod>2026-07-16</lastmod>
+  </url>
+  <url>
+    <loc>https://doloressu.com/pt/</loc>
+    <lastmod>2026-07-16</lastmod>
+  </url>
+  <url>
+    <loc>https://doloressu.com/fr/</loc>
+    <lastmod>2026-07-16</lastmod>
   </url>
   <url>
     <loc>https://doloressu.com/en/projects/clawtile.html</loc>
