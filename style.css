@@ -674,7 +674,7 @@ main {
     min-height: 100%;
 }
 
-.project-clawtile {
+.project-clawchip {
     padding: 28px;
     background: radial-gradient(circle at top right, rgba(167, 110, 59, 0.24), transparent 32%), #16110e;
     display: grid;
@@ -1268,7 +1268,7 @@ main {
         width: 5.8rem;
     }
 
-    .project-clawtile {
+    .project-clawchip {
         grid-template-columns: 1fr;
     }
 

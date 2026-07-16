@@ -10,14 +10,14 @@ const locales = {
         code: "中文",
         path: "zh",
         title: "多乐 Dolores | AI 产品人",
-        description: "多乐 Dolores 的个人网站：AI 产品、ClawTile、小程序与网页实验、周周黑客松社群、生活与创作。",
+        description: "多乐 Dolores 的个人网站：AI 产品、clawchip AI 录音卡、小程序与网页实验、周周黑客松社群、生活与创作。",
         ogLocale: "zh_CN",
         jobTitle: "AI 产品人",
-        schemaDescription: "AI 产品人，ClawTile 联合创始人，周周黑客松社群主理人。",
+        schemaDescription: "AI 产品人，clawchip AI 录音卡联合创始人，周周黑客松社群主理人。",
         nav: ["关于", "生活", "项目", "AI 框架", "留言"],
         hero: {
             lead: "做 AI 产品，也认真创造和生活。",
-            body: "AI 硬件小龙虾录音卡 ClawTile 联合创始人，万人 AI 社群周周黑客松社群主理人，前互联网大厂出海业务产品 / 项目经理。香港中文大学（深圳）金融硕士。",
+            body: "clawchip AI 录音卡联合创始人，万人 AI 社群周周黑客松社群主理人，前互联网大厂出海业务产品 / 项目经理。香港中文大学（深圳）金融硕士。",
             altMain: "多乐在山间黄昏时刻的照片",
             altAccent: "多乐在城市落日街头的照片"
         },
@@ -52,19 +52,20 @@ const locales = {
         },
         projects: {
             title: "我不只表达观点，也把东西真的做出来。",
-            clawtileTitle: "ClawTile AI 硬件项目",
-            clawtileSummary: "一个面向长录音输入与结果回屏场景的 AI 硬件实验，让用户可以更自然地采集内容，再把结构化结果带回来。",
-            clawtilePoints: [
+            clawchipTitle: "clawchip AI 录音卡",
+            clawchipSummary: "一张面向长录音输入与结果回屏场景的 AI 录音卡，让用户可以更自然地采集内容，再把结构化结果带回来。",
+            clawchipPoints: [
                 "我做了产品定义、概念表达和对外呈现。",
                 "重点不只是“做硬件”，而是把 AI 能力放进更顺手的使用路径里。",
                 "这个项目最能代表我把想法落成产品原型的能力。"
             ],
             detail: "查看项目详情",
+            officialSite: "访问 clawchip 官网",
             framework: "打开 AI 硬件框架",
-            clawtilePosterAlt: "ClawTile 产品展示海报",
-            clawtilePrototypeAlt: "ClawTile 原型机实拍",
+            clawchipPosterAlt: "clawchip 产品展示海报",
+            clawchipPrototypeAlt: "clawchip 原型机实拍",
             reportTitle: "AI 硬件创业者学习报告",
-            reportText: "用第一性原理和 MECE 框架拆解 Plaud、Omi、Bee、Limitless、Rabbit、Harvey 与 ClawTile，快速判断一个 AI 硬件项目的需求、硬件必要性、AI 闭环、商业模式和风险边界。",
+            reportText: "用第一性原理和 MECE 框架拆解 Plaud、Omi、Bee、Limitless、Rabbit、Harvey 与 clawchip，快速判断一个 AI 硬件项目的需求、硬件必要性、AI 闭环、商业模式和风险边界。",
             reportAria: "打开 AI 硬件创业者学习报告",
             reportStats: ["判断域", "竞品案例", "天学习路径"],
             reportAction: "打开报告 →",
@@ -108,14 +109,14 @@ const locales = {
         code: "EN",
         path: "",
         title: "Dolores Su | AI Product Builder",
-        description: "Dolores Su's personal website: AI products, ClawTile, playful web experiments, Hackathon Weekly, life, and creative work.",
+        description: "Dolores Su's personal website: AI products, the clawchip AI Recording Card, playful web experiments, Hackathon Weekly, life, and creative work.",
         ogLocale: "en_US",
         jobTitle: "AI Product Builder",
-        schemaDescription: "AI product builder, ClawTile co-founder, and Hackathon Weekly community builder.",
+        schemaDescription: "AI product builder, co-founder of the clawchip AI Recording Card, and Hackathon Weekly community builder.",
         nav: ["About", "Life", "Projects", "AI Framework", "Guestbook"],
         hero: {
             lead: "I build AI products—and take creating and living seriously.",
-            body: "Co-founder of ClawTile, an AI voice-capture hardware product, and community lead of Hackathon Weekly, an AI community with more than 10,000 members. Former product and project manager for global businesses at major internet companies. MSc in Finance from CUHK-Shenzhen.",
+            body: "Co-founder of the clawchip AI Recording Card and community lead of Hackathon Weekly, an AI community with more than 10,000 members. Former product and project manager for global businesses at major internet companies. MSc in Finance from CUHK-Shenzhen.",
             altMain: "Dolores in the mountains at sunset",
             altAccent: "Dolores on a city street at sunset"
         },
@@ -150,19 +151,20 @@ const locales = {
         },
         projects: {
             title: "I don’t just share ideas. I make them real.",
-            clawtileTitle: "ClawTile AI Hardware",
-            clawtileSummary: "An AI hardware experiment for long-form voice capture and on-device result review, helping people collect naturally and bring structured outcomes back into view.",
-            clawtilePoints: [
+            clawchipTitle: "clawchip AI Recording Card",
+            clawchipSummary: "An AI recording card for long-form voice capture and on-device result review, helping people collect naturally and bring structured outcomes back into view.",
+            clawchipPoints: [
                 "I led product definition, concept communication, and external storytelling.",
                 "The goal is not simply to make hardware, but to place AI inside a more natural user journey.",
                 "This project best represents how I turn an idea into a product prototype."
             ],
             detail: "View case study",
+            officialSite: "Visit clawchip",
             framework: "Open the AI hardware framework",
-            clawtilePosterAlt: "ClawTile product presentation",
-            clawtilePrototypeAlt: "ClawTile prototype",
+            clawchipPosterAlt: "clawchip product presentation",
+            clawchipPrototypeAlt: "clawchip prototype",
             reportTitle: "A Field Guide for AI Hardware Builders",
-            reportText: "A first-principles, MECE analysis of Plaud, Omi, Bee, Limitless, Rabbit, Harvey, and ClawTile—designed to assess demand, hardware necessity, the AI loop, business models, and risk boundaries.",
+            reportText: "A first-principles, MECE analysis of Plaud, Omi, Bee, Limitless, Rabbit, Harvey, and clawchip—designed to assess demand, hardware necessity, the AI loop, business models, and risk boundaries.",
             reportAria: "Open the field guide for AI hardware builders",
             reportStats: ["decision areas", "product cases", "day learning path"],
             reportAction: "Open the report →",
@@ -206,14 +208,14 @@ const locales = {
         code: "ES",
         path: "es",
         title: "Dolores Su | Creadora de productos de IA",
-        description: "Sitio personal de Dolores Su: productos de IA, ClawTile, experimentos web, Hackathon Weekly, vida y creación.",
+        description: "Sitio personal de Dolores Su: productos de IA, la tarjeta de grabación con IA clawchip, experimentos web, Hackathon Weekly, vida y creación.",
         ogLocale: "es_ES",
         jobTitle: "Creadora de productos de IA",
-        schemaDescription: "Creadora de productos de IA, cofundadora de ClawTile y responsable de la comunidad Hackathon Weekly.",
+        schemaDescription: "Creadora de productos de IA, cofundadora de la tarjeta de grabación con IA clawchip y responsable de Hackathon Weekly.",
         nav: ["Perfil", "Vida", "Proyectos", "Marco de IA", "Mensajes"],
         hero: {
             lead: "Creo productos de IA y me tomo en serio tanto crear como vivir.",
-            body: "Cofundadora de ClawTile, un dispositivo de IA para capturar voz, y responsable de Hackathon Weekly, una comunidad de IA con más de 10.000 miembros. Anteriormente trabajé como product y project manager en negocios globales de grandes empresas tecnológicas. Máster en Finanzas por CUHK-Shenzhen.",
+            body: "Cofundadora de la tarjeta de grabación con IA clawchip y responsable de Hackathon Weekly, una comunidad de IA con más de 10.000 miembros. Anteriormente trabajé como product y project manager en negocios globales de grandes empresas tecnológicas. Máster en Finanzas por CUHK-Shenzhen.",
             altMain: "Dolores en las montañas al atardecer",
             altAccent: "Dolores en una calle de la ciudad al atardecer"
         },
@@ -236,15 +238,16 @@ const locales = {
         },
         projects: {
             title: "No solo comparto ideas. Las convierto en realidad.",
-            clawtileTitle: "Hardware de IA ClawTile",
-            clawtileSummary: "Un experimento de hardware de IA para capturar voz de larga duración y revisar resultados en pantalla, facilitando una recogida natural y resultados estructurados.",
-            clawtilePoints: ["Me encargué de la definición de producto, la expresión del concepto y su presentación externa.", "El objetivo no es solo fabricar hardware, sino integrar la IA en un recorrido más natural.", "Este proyecto representa cómo convierto una idea en un prototipo de producto."],
+            clawchipTitle: "Tarjeta de grabación con IA clawchip",
+            clawchipSummary: "Una tarjeta de grabación con IA para capturar voz de larga duración y revisar resultados en pantalla, facilitando una recogida natural y resultados estructurados.",
+            clawchipPoints: ["Me encargué de la definición de producto, la expresión del concepto y su presentación externa.", "El objetivo no es solo fabricar hardware, sino integrar la IA en un recorrido más natural.", "Este proyecto representa cómo convierto una idea en un prototipo de producto."],
             detail: "Ver el proyecto",
+            officialSite: "Visitar clawchip",
             framework: "Abrir el marco de hardware de IA",
-            clawtilePosterAlt: "Presentación del producto ClawTile",
-            clawtilePrototypeAlt: "Prototipo de ClawTile",
+            clawchipPosterAlt: "Presentación del producto clawchip",
+            clawchipPrototypeAlt: "Prototipo de clawchip",
             reportTitle: "Guía para emprendedores de hardware de IA",
-            reportText: "Un análisis de Plaud, Omi, Bee, Limitless, Rabbit, Harvey y ClawTile con primeros principios y MECE para evaluar demanda, necesidad del hardware, ciclo de IA, modelo de negocio y riesgos.",
+            reportText: "Un análisis de Plaud, Omi, Bee, Limitless, Rabbit, Harvey y clawchip con primeros principios y MECE para evaluar demanda, necesidad del hardware, ciclo de IA, modelo de negocio y riesgos.",
             reportAria: "Abrir la guía para emprendedores de hardware de IA",
             reportStats: ["áreas de decisión", "casos analizados", "días de aprendizaje"],
             reportAction: "Abrir informe →",
@@ -280,14 +283,14 @@ const locales = {
         code: "PT",
         path: "pt",
         title: "Dolores Su | Criadora de produtos de IA",
-        description: "Site pessoal de Dolores Su: produtos de IA, ClawTile, experimentos web, Hackathon Weekly, vida e criação.",
+        description: "Site pessoal de Dolores Su: produtos de IA, o cartão de gravação com IA clawchip, experimentos web, Hackathon Weekly, vida e criação.",
         ogLocale: "pt_BR",
         jobTitle: "Criadora de produtos de IA",
-        schemaDescription: "Criadora de produtos de IA, cofundadora da ClawTile e líder da comunidade Hackathon Weekly.",
+        schemaDescription: "Criadora de produtos de IA, cofundadora do cartão de gravação com IA clawchip e líder da Hackathon Weekly.",
         nav: ["Sobre", "Vida", "Projetos", "Framework de IA", "Mensagens"],
         hero: {
             lead: "Crio produtos de IA e levo a sério tanto criar quanto viver.",
-            body: "Cofundadora da ClawTile, um hardware de IA para captura de voz, e líder da Hackathon Weekly, uma comunidade de IA com mais de 10 mil membros. Ex-product/project manager em negócios globais de grandes empresas de tecnologia. Mestre em Finanças pela CUHK-Shenzhen.",
+            body: "Cofundadora do cartão de gravação com IA clawchip e líder da Hackathon Weekly, uma comunidade de IA com mais de 10 mil membros. Ex-product/project manager em negócios globais de grandes empresas de tecnologia. Mestre em Finanças pela CUHK-Shenzhen.",
             altMain: "Dolores nas montanhas ao pôr do sol",
             altAccent: "Dolores em uma rua da cidade ao pôr do sol"
         },
@@ -310,15 +313,16 @@ const locales = {
         },
         projects: {
             title: "Não compartilho apenas ideias. Eu as torno reais.",
-            clawtileTitle: "Hardware de IA ClawTile",
-            clawtileSummary: "Um experimento de hardware de IA para captura de voz longa e revisão de resultados na tela, permitindo registrar naturalmente e recuperar resultados estruturados.",
-            clawtilePoints: ["Conduzi a definição do produto, a expressão do conceito e a apresentação externa.", "O objetivo não é apenas criar hardware, mas inserir a IA em uma jornada mais natural.", "Este projeto representa como transformo uma ideia em um protótipo de produto."],
+            clawchipTitle: "Cartão de gravação com IA clawchip",
+            clawchipSummary: "Um cartão de gravação com IA para captura de voz longa e revisão de resultados na tela, permitindo registrar naturalmente e recuperar resultados estruturados.",
+            clawchipPoints: ["Conduzi a definição do produto, a expressão do conceito e a apresentação externa.", "O objetivo não é apenas criar hardware, mas inserir a IA em uma jornada mais natural.", "Este projeto representa como transformo uma ideia em um protótipo de produto."],
             detail: "Ver projeto",
+            officialSite: "Visitar clawchip",
             framework: "Abrir o framework de hardware de IA",
-            clawtilePosterAlt: "Apresentação do produto ClawTile",
-            clawtilePrototypeAlt: "Protótipo da ClawTile",
+            clawchipPosterAlt: "Apresentação do produto clawchip",
+            clawchipPrototypeAlt: "Protótipo da clawchip",
             reportTitle: "Guia para criadores de hardware de IA",
-            reportText: "Uma análise de Plaud, Omi, Bee, Limitless, Rabbit, Harvey e ClawTile com primeiros princípios e MECE para avaliar demanda, necessidade do hardware, ciclo de IA, modelo de negócio e riscos.",
+            reportText: "Uma análise de Plaud, Omi, Bee, Limitless, Rabbit, Harvey e clawchip com primeiros princípios e MECE para avaliar demanda, necessidade do hardware, ciclo de IA, modelo de negócio e riscos.",
             reportAria: "Abrir o guia para criadores de hardware de IA",
             reportStats: ["áreas de decisão", "casos analisados", "dias de aprendizado"],
             reportAction: "Abrir relatório →",
@@ -354,14 +358,14 @@ const locales = {
         code: "FR",
         path: "fr",
         title: "Dolores Su | Créatrice de produits IA",
-        description: "Site personnel de Dolores Su : produits IA, ClawTile, expériences web, Hackathon Weekly, vie et création.",
+        description: "Site personnel de Dolores Su : produits IA, la carte d’enregistrement IA clawchip, expériences web, Hackathon Weekly, vie et création.",
         ogLocale: "fr_FR",
         jobTitle: "Créatrice de produits IA",
-        schemaDescription: "Créatrice de produits IA, cofondatrice de ClawTile et responsable de la communauté Hackathon Weekly.",
+        schemaDescription: "Créatrice de produits IA, cofondatrice de la carte d’enregistrement IA clawchip et responsable de Hackathon Weekly.",
         nav: ["À propos", "Vie", "Projets", "Cadre IA", "Messages"],
         hero: {
             lead: "Je crée des produits IA, tout en prenant la création et la vie au sérieux.",
-            body: "Cofondatrice de ClawTile, un dispositif IA de capture vocale, et responsable de Hackathon Weekly, une communauté IA de plus de 10 000 membres. Ancienne product/project manager pour des activités internationales de grandes entreprises tech. Master en finance de CUHK-Shenzhen.",
+            body: "Cofondatrice de la carte d’enregistrement IA clawchip et responsable de Hackathon Weekly, une communauté IA de plus de 10 000 membres. Ancienne product/project manager pour des activités internationales de grandes entreprises tech. Master en finance de CUHK-Shenzhen.",
             altMain: "Dolores dans les montagnes au coucher du soleil",
             altAccent: "Dolores dans une rue au coucher du soleil"
         },
@@ -384,15 +388,16 @@ const locales = {
         },
         projects: {
             title: "Je ne partage pas seulement des idées. Je les rends réelles.",
-            clawtileTitle: "ClawTile, hardware IA",
-            clawtileSummary: "Une expérience de hardware IA pour la capture vocale longue et la consultation des résultats à l’écran, afin de recueillir naturellement et de retrouver des résultats structurés.",
-            clawtilePoints: ["J’ai dirigé la définition du produit, l’expression du concept et sa présentation externe.", "L’objectif n’est pas seulement de fabriquer du hardware, mais d’intégrer l’IA dans un parcours plus naturel.", "Ce projet représente ma capacité à transformer une idée en prototype de produit."],
+            clawchipTitle: "Carte d’enregistrement IA clawchip",
+            clawchipSummary: "Une carte d’enregistrement IA pour la capture vocale longue et la consultation des résultats à l’écran, afin de recueillir naturellement et de retrouver des résultats structurés.",
+            clawchipPoints: ["J’ai dirigé la définition du produit, l’expression du concept et sa présentation externe.", "L’objectif n’est pas seulement de fabriquer du hardware, mais d’intégrer l’IA dans un parcours plus naturel.", "Ce projet représente ma capacité à transformer une idée en prototype de produit."],
             detail: "Voir le projet",
+            officialSite: "Visiter clawchip",
             framework: "Ouvrir le cadre hardware IA",
-            clawtilePosterAlt: "Présentation du produit ClawTile",
-            clawtilePrototypeAlt: "Prototype ClawTile",
+            clawchipPosterAlt: "Présentation du produit clawchip",
+            clawchipPrototypeAlt: "Prototype clawchip",
             reportTitle: "Guide pour les créateurs de hardware IA",
-            reportText: "Une analyse de Plaud, Omi, Bee, Limitless, Rabbit, Harvey et ClawTile fondée sur les premiers principes et MECE, pour évaluer la demande, la nécessité du hardware, la boucle IA, le modèle économique et les risques.",
+            reportText: "Une analyse de Plaud, Omi, Bee, Limitless, Rabbit, Harvey et clawchip fondée sur les premiers principes et MECE, pour évaluer la demande, la nécessité du hardware, la boucle IA, le modèle économique et les risques.",
             reportAria: "Ouvrir le guide pour les créateurs de hardware IA",
             reportStats: ["axes de décision", "cas analysés", "jours d’apprentissage"],
             reportAction: "Ouvrir le rapport →",
@@ -596,14 +601,14 @@ ${alternates}
                 <article class="project-card project-feature">
                     <div class="project-copy">
                         <p class="project-kicker">Featured Project</p>
-                        <h3>${locale.projects.clawtileTitle}</h3>
-                        <p class="project-summary">${locale.projects.clawtileSummary}</p>
-                        <ul class="project-points">${list(locale.projects.clawtilePoints)}</ul>
-                        <div class="project-links"><a href="${projectPrefix}/clawtile.html">${locale.projects.detail}</a><a href="${learningPrefix}/ai-hardware-framework.html">${locale.projects.framework}</a></div>
+                        <h3>${locale.projects.clawchipTitle}</h3>
+                        <p class="project-summary">${locale.projects.clawchipSummary}</p>
+                        <ul class="project-points">${list(locale.projects.clawchipPoints)}</ul>
+                        <div class="project-links"><a href="${projectPrefix}/clawchip.html">${locale.projects.detail}</a><a href="https://claw-chip.com" target="_blank" rel="noopener noreferrer">${locale.projects.officialSite}</a><a href="${learningPrefix}/ai-hardware-framework.html">${locale.projects.framework}</a></div>
                     </div>
-                    <div class="project-media project-clawtile">
-                        <img class="card-shot" src="${prefix}assets/clawtile-price-board.png" alt="${locale.projects.clawtilePosterAlt}" width="1440" height="1440" loading="eager" decoding="async">
-                        <img class="floating-shot" src="${prefix}assets/clawtile-prototype-photo.jpg" alt="${locale.projects.clawtilePrototypeAlt}" width="831" height="1120" loading="eager" decoding="async">
+                    <div class="project-media project-clawchip">
+                        <img class="card-shot" src="${prefix}assets/clawchip-price-board.png" alt="${locale.projects.clawchipPosterAlt}" width="1440" height="1440" loading="eager" decoding="async">
+                        <img class="floating-shot" src="${prefix}assets/clawchip-prototype-photo.jpg" alt="${locale.projects.clawchipPrototypeAlt}" width="831" height="1120" loading="eager" decoding="async">
                     </div>
                 </article>
 
