@@ -8,7 +8,7 @@ const locales = {
     zh: {
         htmlLang: "zh-CN",
         code: "中文",
-        path: "",
+        path: "zh",
         title: "多乐 Dolores | AI 产品人",
         description: "多乐 Dolores 的个人网站：AI 产品、ClawTile、小程序与网页实验、周周黑客松社群、生活与创作。",
         ogLocale: "zh_CN",
@@ -106,7 +106,7 @@ const locales = {
     en: {
         htmlLang: "en",
         code: "EN",
-        path: "en",
+        path: "",
         title: "Dolores Su | AI Product Builder",
         description: "Dolores Su's personal website: AI products, ClawTile, playful web experiments, Hackathon Weekly, life, and creative work.",
         ogLocale: "en_US",
@@ -458,10 +458,15 @@ function renderLanguageMenu(locale) {
 function renderPage(key, locale) {
     locale.key = key;
     const prefix = locale.path ? "../" : "";
-    const canonical = `https://doloressu.com/${locale.path ? `${locale.path}/` : ""}`;
-    const projectPrefix = key === "zh" || key === "en" ? "projects" : "../en/projects";
-    const learningPrefix = key === "zh" ? "learning" : "../learning";
-    const gamesPrefix = key === "zh" ? "games" : "../games";
+    const canonicalPath = locale.canonicalPath ?? locale.path;
+    const canonical = `https://doloressu.com/${canonicalPath ? `${canonicalPath}/` : ""}`;
+    const projectPrefix = key === "zh"
+        ? "../projects"
+        : key === "en"
+            ? (locale.path ? "projects" : "en/projects")
+            : "../en/projects";
+    const learningPrefix = locale.path ? "../learning" : "learning";
+    const gamesPrefix = locale.path ? "../games" : "games";
     const alternates = Object.entries(locales).map(([altKey, alt]) =>
         `    <link rel="alternate" hreflang="${altKey === "zh" ? "zh-Hans" : altKey}" href="https://doloressu.com/${alt.path ? `${alt.path}/` : ""}">`
     ).join("\n");
@@ -661,4 +666,7 @@ for (const [key, locale] of Object.entries(locales)) {
     await writeFile(destination, renderPage(key, locale), "utf8");
 }
 
-console.log(`Generated ${Object.keys(locales).length} localized homepages.`);
+const englishAlias = { ...locales.en, path: "en", canonicalPath: "" };
+await writeFile(join(root, "en", "index.html"), renderPage("en", englishAlias), "utf8");
+
+console.log(`Generated ${Object.keys(locales).length} localized homepages plus the /en/ compatibility page.`);
